@@ -157,6 +157,17 @@ text <- search_text(paper, pattern, return = "match", perl = TRUE)
 knitr::kable(text)
 ```
 
+### Expand Text
+
+You can expand the text returned by `search_text()` or a module with `expand_text()`.
+
+```{r}
+marginal <- search_text(paper, "marginal") |>
+  expand_text(paper, plus = 1, minus = 1)
+
+marginal[, c("text", "expanded")]
+```
+
 
 
 ## ChatGPT
