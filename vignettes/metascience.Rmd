@@ -26,16 +26,17 @@ mytable <- function(tbl) {
 #| label: setup
 #| message: false
 library(papercheck)
-library(dplyr) # for data wrangling
 library(readr) # reading and writing CSV files
+library(dplyr) # for data wrangling
+library(tidyr) # for data wrangling
 library(ggplot2) # for dataviz
+library(tidytext) 
 ```
 
-See the [batch processing vignette](batch.html) for information on how to load multiple PDFs. Here, we will load 250 open access papers from Psychological Science, which have been previously converted to XML by grobid, read in to papercheck, and saved as an Rds object. 
+See the [batch processing vignette](batch.html) for information on how to load multiple PDFs. Here, we will load 250 open access papers from Psychological Science, which have been previously converted to XML by grobid and read in to papercheck. 
 
 ```{r}
-# load from RDS for efficiency
-papers <- readRDS("psysci_oa.Rds")
+papers <- psychsci
 ```
 
 ### Fixed Terms
@@ -346,12 +347,134 @@ mytable(misses2)
 
 ```{r}
 data.frame(
-  #module = c(v0$module, v1$module, v2$module),
+  module = c(v0$module, v1$module, v2$module),
   tables = c(v0$table_matched, v1$table_matched, v2$table_matched),
   traffic_lights = c(v0$tl_matched, v1$tl_matched, v2$tl_matched)
 )
 ```
 
+## Regression Classification
+
+You can build a simple regression model to predict the classification of text strings.
+
+### Get important words
+
+You can use any method for finding the words you want to use in your model, but papercheck has a built-in function to find the words that are most distinctive in your two classification groups. 
+
+```{r}
+words <- distinctive_words(
+  text = ground_truth$text,
+  classification = ground_truth$power_computation
+)
+
+words
+```
+
+### Train a model
+
+First, code the features of your ground truth text using `text_features()`. This will give you a data frame that codes 0 or 1 for the absence or presence of each word or feature.
+
+```{r}
+has_symbols <- c(has_equals = "=", 
+                 has_percent = "%")
+
+training_features_log <- text_features(
+  text = ground_truth$text, 
+  words = words,
+  has_number = TRUE,
+  has_symbol = has_symbols
+)
+
+# show the first row
+training_features_log[1, ] |> str()
+```
+
+You can then use this coded data to train a model. Here, we're using a simple binomial logistic regression to predict the classification from all fo the features.
+
+```{r}
+# Train logistic regression model
+power_log_model <- glm(ground_truth$power_computation ~ .,
+                 data = training_features_log,
+                 family = "binomial")
+
+summary(power_log_model)
+```
+
+You can use any model you like and any method to assess and choose the best model.
+
+### Predict Classification
+
+Now you can classify any text using this model. Here, we're going to predict the classification of the original training data. Use `predict_classification()` to return the model response, and compare this result to a threshold (here 0.5) to generate the predicted classification.
+
+```{r}
+ground_truth <- ground_truth |>
+  mutate(
+    model_response = predict_classification(
+      power_log_model, text, words, TRUE, has_symbols),
+    power_computation_predict = model_response > 0.5
+  )
+
+count(ground_truth, power_computation, power_computation_predict)
+```
+
+### Create a module
+
+To create a module for this, you will need to save your model and create a module with code.
+
+```{r}
+saveRDS(power_log_model, "power/power_log_model.Rds")
+```
+
+
+```
+{
+  "title": "Classify with Log Model",
+  "description": "",
+  "code": {
+    "packages": ["papercheck"],
+    "code": "power_log_model.R"
+  }
+}
+```
+
+
+```{r}
+
+words <- c("size", "effect", "sample", 
+           "participants", "detect", "analysis",
+           "medium", "power", "faul", "respondents", 
+           "α", "cohen's", "research", 
+           "version", "experiment")
+
+has_symbols <- c(has_equals = "=", 
+                 has_percent = "%")
+
+readRDS("power/power_log_model.Rds")
+
+table <- paper |>
+  papercheck::search_text("power(ed)?\\b") |>
+  papercheck::search_text("(\\.[0-9]|[0-9]%)")
+
+table$model_response <- papercheck::predict_classification(
+  power_log_model, table$text, words, TRUE, has_symbols
+)
+
+table$model_classification <- table$model_response > 0.5
+
+traffic_light <- "red"
+if (any(table$model_classification)) traffic_light <- "green"
+
+# return
+list(
+  table = table,
+  traffic_light = traffic_light
+)
+
+```
+
+```{r}
+v4 <- module_run(psychsci, "power/power_log_model.mod")
+```
 
 
 
