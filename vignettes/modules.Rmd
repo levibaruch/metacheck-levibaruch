@@ -121,49 +121,6 @@ gt.25 <- imprecise_ps$table |>
 gt.25$expanded[1:3] # look at the first 3
 ```
 
-
-### llm_summarise
-
-Generate a 1-sentence summary for each section. This uses the `llm()` function with the query "summarise this section briefly, in one sentence" and returns a one-sentence summary of each major section (abstract, intro, method, results, discussion, acknowledgements, appendices)
-
-```{r, eval = FALSE}
-summaries <- module_run(paper, "llm_summarise", seed = 8675309)
-
-summaries
-```
-
-
-|text |section |answer | time| tokens|
-|:----------------------------------------------------------------------------------------------------|:----------|:----------------------------------------------------------------------------------------------------|---------:|------:|
-|Across taxa, animals possess a number of behavioral adaptations that function to mitigate the cos... |abstract   |Humans have evolved behavioral adaptations to detect and avoid infectious microorganisms, includi... | 0.1327031|    373|
-|the evolutionary-biology literature, which highlights the fact that organisms neutralize pathogen... |intro      |The study aimed to replicate a previous finding that people who have recently been ill are more a... | 0.2404155|   1406|
-|Method Except where noted, all methodological details-including all stimuli and dot-probe procedu... |method     |The study replicated the methodological details of Miller and Maner (2011) to test the interactio... | 0.3714075|   2314|
-|Results On the basis of our preregistered exclusion criteria, we removed the 9 participants with ... |results    |The study found a main effect of face type, with slower responses to disfigured faces, but no mai... | 0.2508097|   1227|
-|Discussion The study replicated here has been interpreted as a key piece of evidence supporting a... |discussion |This study's null findings do not provide strong evidence that pathogen avoidance does not vary a... | 0.2339141|    904|
-|NA Funding This work was supported by Horizon 2020 European Research Council Grant No. StG-2015 6... |funding    |This study was funded by a Horizon 2020 European Research Council Grant and has made its data, an... | 0.1644160|    210|
-|Declaration of Conflicting Interests The author(s) declared that there were no conflicts of inter... |annex      |The author(s) declared that there were no conflicts of interest with respect to the authorship or... | 0.0778079|    101|
-
-Showing 7 of 7 rows
-
-The default table isn't very helpful here, so let's customise the output. The object returned from a module usually contains a table. We just want to show the section and answer columns here. 
-
-```{r, echo = FALSE}
-#saveRDS(summaries, "summaries.Rds")
-summaries <- readRDS("summaries.Rds")
-```
-
-
-
-```{r}
-summaries$table[, c("section", "answer")]
-```
-
-If you try to run this on the whole PsychSci set, you will get an error message because the number of LLM calls is much higher than the maximum number, which is set by default to 30 (the per-minute rate limit for the default model on a free groq account). You can increase the maximum allowable calls (`llm()` manages your rate limit, so this would take nearly an hour at 30 calls per minute) using `llm_max_calls()`, but we aren't going to do this here. 
-
-```{r, error = TRUE}
-summaries_ps <- module_run(psychsci, "llm_summarise", seed = 8675309)
-```
-
 ### marginal
 
 List all sentences that describe an effect as 'marginally significant'.
