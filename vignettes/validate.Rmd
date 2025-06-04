@@ -100,7 +100,7 @@ v
 
 ### Results List
 
-The result is actually a list with the module name, the actual results of the module for each expected return object, a list of match information for each expected return object, and stats for this match information. 
+The result is actually a list with the module name, the observed results of the module for each expected return object, a list of match information for each expected return object, and stats for this match information. 
 
 ```{r}
 sapply(v, names) |> str()
@@ -108,7 +108,7 @@ sapply(v, names) |> str()
 
 ### Non-Summary Tables
 
-For tables where there are zero or more rows possible per id, the `matches` table gives you `expected`, `actual`, and `match` columns.
+For tables where there are zero or more rows possible per id, the `matches` table gives you `expected`, `observed`, and `match` columns.
 
 ```{r, eval = FALSE}
 v$matches$table
@@ -130,7 +130,7 @@ v$stats$table
 
 ### Summary Tables
 
-For summary tables, where there is one row per paper id, the matches table is a little different. For each non-id column, it returned the expected and actual values, plus a column stating whether these match. 
+For summary tables, where there is one row per paper id, the matches table is a little different. For each non-id column, it returned the expected and observed values, plus a column stating whether these match. 
 
 ```{r, eval=FALSE}
 v$matches$summary
