@@ -35,7 +35,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">papercheck</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9048</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9049</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -187,7 +187,7 @@ info, references, and citations.</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">paper</span><span class="op">$</span><span class="va">info</span></span></code></pre></div>
 <pre><code><span><span class="co">#&gt; $filename</span></span>
-<span><span class="co">#&gt; [1] "/private/var/folders/t6/7x6md_5s2j5bfb324s784yzw0000gn/T/Rtmp45XFtF/temp_libpathf3c16d028acf/papercheck/extdata/to_err_is_human.xml"</span></span>
+<span><span class="co">#&gt; [1] "/private/var/folders/t6/7x6md_5s2j5bfb324s784yzw0000gn/T/RtmpLA1jfq/temp_libpath7e3d3b0651/papercheck/extdata/to_err_is_human.xml"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $title</span></span>
 <span><span class="co">#&gt; [1] "To Err is Human: An Empirical Investigation"</span></span>
@@ -1043,6 +1043,10 @@ will share more modules.</p>
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/module_list.html">module_list</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">#&gt;  * all_p_values: List all p-values in the text, returning the matched text (e.g., 'p = 0.04')</span></span>
 <span><span class="co">#&gt; and document location in a table.</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Note that this will not catch p-values reported like "the p-value is 0.03" because that results in a ton of false positives when papers discuss p-value thresholds. If you need to detect text like that, use `search_text()` function and a custom pattern like "\\bp(-| )?values?\\s+.{1,20}\\s+[0-9\\.]+"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; This will catch most comparators like =&lt;&gt;~≈≠≤≥≪≫ and most versions of scientific notation like 5.0 x 10^-2 or 5.0e-2. If you find any formats that are not correctly handled by this function, please contact the author.</span></span>
 <span><span class="co">#&gt;  * all_urls: List all the URLs in the main text.</span></span>
 <span><span class="co">#&gt;  * effect_size: Detect t-tests and F-tests  with missing effect sizes</span></span>
 <span><span class="co">#&gt;  * exact_p: List any p-values reported with insufficient precision (e.g., p &lt; .05 or p = n.s.)</span></span>
@@ -1050,7 +1054,9 @@ will share more modules.</p>
 <span><span class="co">#&gt;  * osf_check: List all OSF links and whether they are open, closed, or do not exist.</span></span>
 <span><span class="co">#&gt;  * ref_consistency: Check if all references are cited and all citations are referenced</span></span>
 <span><span class="co">#&gt;  * retractionwatch: Flag any cited papers in the RetractionWatch database</span></span>
-<span><span class="co">#&gt;  * statcheck: Check consistency of p-values and test statistics</span></span></code></pre>
+<span><span class="co">#&gt;  * statcheck: Check consistency of p-values and test statistics</span></span>
+<span><span class="co">#&gt;  </span></span>
+<span><span class="co">#&gt; Use `module_help("module_name")` for help with a specific module</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="running-modules">Running modules<a class="anchor" aria-label="anchor" href="#running-modules"></a>

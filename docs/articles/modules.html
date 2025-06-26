@@ -35,7 +35,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">papercheck</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9048</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9049</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -90,21 +90,26 @@ will share more modules.</p>
 <ul>
 <li>all_p_values: List all p-values in the text, returning the matched
 text (e.g., ‘p = 0.04’) and document location in a table.</li>
-<li>all_urls: List all the URLs in the main text.</li>
-<li>effect_size: Detect t-tests and F-tests with missing effect
-sizes</li>
-<li>exact_p: List any p-values reported with insufficient precision
-(e.g., p &lt; .05 or p = n.s.)</li>
-<li>marginal: List all sentences that describe an effect as ‘marginally
-significant’.</li>
-<li>osf_check: List all OSF links and whether they are open, closed, or
-do not exist.</li>
-<li>ref_consistency: Check if all references are cited and all citations
-are referenced</li>
-<li>retractionwatch: Flag any cited papers in the RetractionWatch
-database</li>
-<li>statcheck: Check consistency of p-values and test statistics</li>
 </ul>
+<p>Note that this will not catch p-values reported like “the p-value is
+0.03” because that results in a ton of false positives when papers
+discuss p-value thresholds. If you need to detect text like that, use
+<code><a href="../reference/search_text.html">search_text()</a></code> function and a custom pattern like “\bp(-|
+)?values?\s+.{1,20}\s+[0-9\.]+”</p>
+<p>This will catch most comparators like =&lt;&gt;~≈≠≤≥≪≫ and most
+versions of scientific notation like 5.0 x 10^-2 or 5.0e-2. If you find
+any formats that are not correctly handled by this function, please
+contact the author. * all_urls: List all the URLs in the main text. *
+effect_size: Detect t-tests and F-tests with missing effect sizes *
+exact_p: List any p-values reported with insufficient precision (e.g., p
+&lt; .05 or p = n.s.) * marginal: List all sentences that describe an
+effect as ‘marginally significant’. * osf_check: List all OSF links and
+whether they are open, closed, or do not exist. * ref_consistency: Check
+if all references are cited and all citations are referenced *
+retractionwatch: Flag any cited papers in the RetractionWatch database *
+statcheck: Check consistency of p-values and test statistics</p>
+<p>Use <code>module_help("module_name")</code> for help with a specific
+module</p>
 </div>
 <div class="section level2">
 <h2 id="built-in-modules">Built-in Modules<a class="anchor" aria-label="anchor" href="#built-in-modules"></a>
@@ -124,28 +129,28 @@ of 250 open-access papers from Psychological Science.</p>
 <span></span>
 <span><span class="va">all_p</span><span class="op">$</span><span class="va">table</span> <span class="co"># print table</span></span></code></pre></div>
 <pre><code><span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 20 × 9</span></span></span>
-<span><span class="co">#&gt;    text     section header           div     p     s id           p_comp p_value</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> p = .003 method  Questionnaires     6     2     3 09567976209… =        0.003</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> p = .08  method  Questionnaires     6     2     3 09567976209… =        0.08 </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> p &lt; .001 results Results            9     2     1 09567976209… &lt;        0.001</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> p &lt; .025 results Results            9     2     3 09567976209… &lt;        0.025</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> p = .040 results Results            9     2     3 09567976209… =        0.04 </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> p = .173 results Results            9     2     3 09567976209… =        0.173</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> p = .006 results Results            9     2     4 09567976209… =        0.006</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> p = .02  results Results            9     2     4 09567976209… =        0.02 </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> p = .691 results Results            9     2     5 09567976209… =        0.691</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> p = .303 results Results            9     2     5 09567976209… =        0.303</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span> p = .023 results Results            9     3     3 09567976209… =        0.023</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">12</span> p &lt; .001 results Results            9     3     3 09567976209… &lt;        0.001</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">13</span> p = .006 results Results            9     4     2 09567976209… =        0.006</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">14</span> p = .037 results Results            9     4     2 09567976209… =        0.037</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">15</span> p = .038 results Results            9     4     2 09567976209… =        0.038</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">16</span> p = .358 results Results            9     4     2 09567976209… =        0.358</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">17</span> p &lt; .001 results Results            9     4     3 09567976209… &lt;        0.001</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">18</span> p = .127 results Results            9     4     3 09567976209… =        0.127</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">19</span> p = .062 results Results            9     4     3 09567976209… =        0.062</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">20</span> p = .047 results Results            9     4     3 09567976209… =        0.047</span></span></code></pre>
+<span><span class="co">#&gt;    text        section header           div     p     s id        p_comp p_value</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> <span style="color: #949494;">"</span>p = .003<span style="color: #949494;">"</span>  method  Questionnaires     6     2     3 09567976… =        0.003</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> <span style="color: #949494;">"</span>p = .08<span style="color: #949494;">"</span>   method  Questionnaires     6     2     3 09567976… =        0.08 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> <span style="color: #949494;">"</span>p &lt; .001 <span style="color: #949494;">"</span> results Results            9     2     1 09567976… &lt;        0.001</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> <span style="color: #949494;">"</span>p &lt; .025<span style="color: #949494;">"</span>  results Results            9     2     3 09567976… &lt;        0.025</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> <span style="color: #949494;">"</span>p = .040<span style="color: #949494;">"</span>  results Results            9     2     3 09567976… =        0.04 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> <span style="color: #949494;">"</span>p = .173<span style="color: #949494;">"</span>  results Results            9     2     3 09567976… =        0.173</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> <span style="color: #949494;">"</span>p = .006<span style="color: #949494;">"</span>  results Results            9     2     4 09567976… =        0.006</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> <span style="color: #949494;">"</span>p = .02<span style="color: #949494;">"</span>   results Results            9     2     4 09567976… =        0.02 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> <span style="color: #949494;">"</span>p = .691<span style="color: #949494;">"</span>  results Results            9     2     5 09567976… =        0.691</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> <span style="color: #949494;">"</span>p = .303<span style="color: #949494;">"</span>  results Results            9     2     5 09567976… =        0.303</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span> <span style="color: #949494;">"</span>p = .023<span style="color: #949494;">"</span>  results Results            9     3     3 09567976… =        0.023</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">12</span> <span style="color: #949494;">"</span>p &lt; .001<span style="color: #949494;">"</span>  results Results            9     3     3 09567976… &lt;        0.001</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">13</span> <span style="color: #949494;">"</span>p = .006<span style="color: #949494;">"</span>  results Results            9     4     2 09567976… =        0.006</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">14</span> <span style="color: #949494;">"</span>p = .037<span style="color: #949494;">"</span>  results Results            9     4     2 09567976… =        0.037</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">15</span> <span style="color: #949494;">"</span>p = .038<span style="color: #949494;">"</span>  results Results            9     4     2 09567976… =        0.038</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">16</span> <span style="color: #949494;">"</span>p = .358<span style="color: #949494;">"</span>  results Results            9     4     2 09567976… =        0.358</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">17</span> <span style="color: #949494;">"</span>p &lt; .001<span style="color: #949494;">"</span>  results Results            9     4     3 09567976… &lt;        0.001</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">18</span> <span style="color: #949494;">"</span>p = .127<span style="color: #949494;">"</span>  results Results            9     4     3 09567976… =        0.127</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">19</span> <span style="color: #949494;">"</span>p = .062<span style="color: #949494;">"</span>  results Results            9     4     3 09567976… =        0.062</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">20</span> <span style="color: #949494;">"</span>p = .047<span style="color: #949494;">"</span>  results Results            9     4     3 09567976… =        0.047</span></span></code></pre>
 <p>If you run this module on all 250 papers, you will get more rows than
 you probably want to print in the full table one row for every p-value
 in each paper), so you can print the summary table, which gives you one
@@ -413,12 +418,12 @@ row per paper.</p>
 <pre><code><span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 2</span></span></span>
 <span><span class="co">#&gt;   text          n</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> p &lt; .001   <span style="text-decoration: underline;">1</span>578</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> p &lt; .05     170</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> p &lt; .01     152</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> p = .001    125</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> p = .002    100</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> p &lt; .0001    91</span></span></code></pre>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> p &lt; .001   <span style="text-decoration: underline;">1</span>503</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> p &lt; .01     137</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> p &lt; .05     135</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> p = .001    120</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> p = .002     93</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> p &lt; .0001    88</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="all_urls">all_urls<a class="anchor" aria-label="anchor" href="#all_urls"></a>
@@ -725,14 +730,14 @@ or tables, but what is the deal with “p &gt; .25”?</p>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html" class="external-link">count</a></span><span class="op">(</span><span class="va">text</span>, sort <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 2</span></span></span>
-<span><span class="co">#&gt;   text         n</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> p &lt; .05    170</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> p &lt; .01    152</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> p &lt; .005    18</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> p &gt; .250    18</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> p &gt; .05     14</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> p &gt; .25     12</span></span></code></pre>
+<span><span class="co">#&gt;   text           n</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> <span style="color: #949494;">"</span>p &lt; .01<span style="color: #949494;">"</span>    137</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> <span style="color: #949494;">"</span>p &lt; .05<span style="color: #949494;">"</span>    135</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> <span style="color: #949494;">"</span>p &lt; .05 <span style="color: #949494;">"</span>    35</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> <span style="color: #949494;">"</span>p &gt; .250<span style="color: #949494;">"</span>    17</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> <span style="color: #949494;">"</span>p &lt; .005<span style="color: #949494;">"</span>    16</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> <span style="color: #949494;">"</span>p &lt; .01 <span style="color: #949494;">"</span>    15</span></span></code></pre>
 <p>We can expand the text to check the context for “p &gt; .25”.</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gt.25</span> <span class="op">&lt;-</span> <span class="va">imprecise_ps</span><span class="op">$</span><span class="va">table</span> <span class="op">|&gt;</span></span>
