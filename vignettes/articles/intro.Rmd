@@ -27,7 +27,7 @@ As a team, we have a specific philosophy on how to create useful automated check
 
 ## PaperCheck
 
-![](../../logo.png){style="float:right; width: 10em;"}
+![](https://scienceverse.github.io/papercheck/logo.png){style="float:right; width: 10em;" fig-alt="Papercheck Logo, a green hexagon with PAPAERCHECK in art deco font"}
 
 In this post, we introduce [Papercheck](https://scienceverse.github.io/papercheck/), a new tool that leverages text search, code, and large language models to extract and supplement information from scientific documents (including manuscripts, submitted or published articles, or preregistration documents) and provides automated suggestions for improvement.
 
@@ -77,6 +77,6 @@ We are excited to continue developing Papercheck in close collaboration with the
 
 Papercheck is developed by a collaborative team of researchers, consisting of (from left to right in the picture below) [Lisa DeBruine](https://debruine.github.io) (developer and maintainer) and [Daniël Lakens](https://sites.google.com/site/lakens2/Home) (developer), [René Bekkers](https://research.vu.nl/en/persons/rene-bekkers) (collaborator and PI of Transparency Check), [Cristian Mesquida](https://ssreplicationcentre.com/author/cristian-mesquida/) (postdoctoral researcher), and Max Littel and Jakub Werner (research assistants).
 
-![](papercheck_team.png)
+![](papercheck_team.png){fig-alt="The faces of the papercheck team"}
 
 Papercheck is a component of a broader research project, Research Transparency Check, led by René Bekkers, and funded by a [TDCC-SSH grant](https://tdcc.nl/tdcc-ssh-challenge-projects/research-transparency-check/) from the Dutch Research Council (NWO). Our funded project priorities are described in more detail in our grant proposal, available here: <https://osf.io/cpv4d/>.
