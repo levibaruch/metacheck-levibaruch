@@ -13,7 +13,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">papercheck</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9048</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9049</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,7 +49,12 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">pdf2grobid</span><span class="op">(</span></span>
 <span>  <span class="va">filename</span>,</span>
 <span>  save_path <span class="op">=</span> <span class="st">"."</span>,</span>
-<span>  grobid_url <span class="op">=</span> <span class="st">"https://kermitt2-grobid.hf.space"</span></span>
+<span>  grobid_url <span class="op">=</span> <span class="st">"https://kermitt2-grobid.hf.space"</span>,</span>
+<span>  start <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>,</span>
+<span>  end <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>,</span>
+<span>  consolidateCitations <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>  consolidateHeader <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>  consolidateFunders <span class="op">=</span> <span class="fl">0</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -68,10 +73,34 @@
 <dt id="arg-grobid-url">grobid_url<a class="anchor" aria-label="anchor" href="#arg-grobid-url"></a></dt>
 <dd><p>the URL to the grobid server</p></dd>
 
+
+<dt id="arg-start">start<a class="anchor" aria-label="anchor" href="#arg-start"></a></dt>
+<dd><p>the first page of the PDF to read (defaults to -1 to read all pages)</p></dd>
+
+
+<dt id="arg-end">end<a class="anchor" aria-label="anchor" href="#arg-end"></a></dt>
+<dd><p>the last page of the PDF to read (defaults to -1 to read all pages)</p></dd>
+
+
+<dt id="arg-consolidatecitations">consolidateCitations<a class="anchor" aria-label="anchor" href="#arg-consolidatecitations"></a></dt>
+<dd><p>whether to fix/enhance citations</p></dd>
+
+
+<dt id="arg-consolidateheader">consolidateHeader<a class="anchor" aria-label="anchor" href="#arg-consolidateheader"></a></dt>
+<dd><p>whether to fix/enhance paper info</p></dd>
+
+
+<dt id="arg-consolidatefunders">consolidateFunders<a class="anchor" aria-label="anchor" href="#arg-consolidatefunders"></a></dt>
+<dd><p>whether to fix/enhance funder info</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     <p>XML object</p>
+    </div>
+    <div class="section level2">
+    <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
+    <p>Consolidation of citations, headers, and funders looks up these items in CrossRef or another database to fix or enhance information (see <a href="https://grobid.readthedocs.io/en/latest/Consolidation/" class="external-link">https://grobid.readthedocs.io/en/latest/Consolidation/</a>). This can slow down conversion. Consolidating headers is only useful for published papers, and can be set to 0 for work in prep.</p>
     </div>
 
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
