@@ -13,7 +13,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">papercheck</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9054</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9056</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,6 +39,27 @@
       <small>Source: <a href="https://github.com/scienceverse/papercheck/blob/HEAD/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.0.0.9056" id="papercheck-0009056">papercheck 0.0.0.9056<a class="anchor" aria-label="anchor" href="#papercheck-0009056"></a></h2>
+<ul><li>If <code><a href="../reference/expand_text.html">expand_text()</a></code> doesn’t find a text match because sentence location info is missing, it now returns the original text instead of NA</li>
+<li>Fixed a bug that prevented matching xrefs sentences under some circumstances (when there was an initial with a full stop in the citation) – re-run <code><a href="../reference/read.html">read()</a></code> on XMLs to update any saved paper objects</li>
+<li>
+<code>psychsci</code> updated for these fixes</li>
+<li>Changed <code>retractionwatch</code> internal data to <code><a href="../reference/retractionwatch.html">retractionwatch()</a></code> function (alias <code><a href="../reference/retractionwatch.html">rw()</a></code>) to support user updating.</li>
+<li>Added new function <code><a href="../reference/rw_date.html">rw_date()</a></code> so you can find out when retractionwatch was last updated</li>
+<li>New function <code><a href="../reference/rw_update.html">rw_update()</a></code> lets you update retractionwatch yourself</li>
+</ul></div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.0.0.9055" id="papercheck-0009055">papercheck 0.0.0.9055<a class="anchor" aria-label="anchor" href="#papercheck-0009055"></a></h2>
+<ul><li>
+<code><a href="../reference/pdf2grobid.html">pdf2grobid()</a></code> handles <code>save_path</code> batter if any path components don’t exist yet. The argument <code>save_path</code> also now can take a vector of the same length as the number of PDFs to convert, so you can specify the name of each output XML.</li>
+<li>
+<code><a href="../reference/read.html">read()</a></code> now skips any imports with errors and warns you about them after importing all files</li>
+<li>Fixed a bug that errored on read() when bibentry files don’t format correctly</li>
+<li>Function <code><a href="../reference/osf_get_all_pages.html">osf_get_all_pages()</a></code> now has a new argument <code>page_end</code> to limit the number of pages retrieved (mainly for testing purposes), and is external (previously internal)</li>
+<li>Fixed a bug in <code><a href="../reference/osf_files.html">osf_files()</a></code> that failed on paths with spaces</li>
+<li>Fixed a bug in <code><a href="../reference/read.html">read()</a></code> that duplicated entries in xrefs</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.0.0.9054" id="papercheck-0009054">papercheck 0.0.0.9054<a class="anchor" aria-label="anchor" href="#papercheck-0009054"></a></h2>
 <ul><li>
