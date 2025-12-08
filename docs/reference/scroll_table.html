@@ -51,6 +51,7 @@
 <span>  colwidths <span class="op">=</span> <span class="st">"auto"</span>,</span>
 <span>  scroll_above <span class="op">=</span> <span class="fl">2</span>,</span>
 <span>  height <span class="op">=</span> <span class="fl">200</span>,</span>
+<span>  escape <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  column <span class="op">=</span> <span class="st">"body"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -75,6 +76,10 @@
 <dd><p>the height of the scroll window</p></dd>
 
 
+<dt id="arg-escape">escape<a class="anchor" aria-label="anchor" href="#arg-escape"></a></dt>
+<dd><p>whether or not to escape the DT (necessary if using raw html)</p></dd>
+
+
 <dt id="arg-column">column<a class="anchor" aria-label="anchor" href="#arg-column"></a></dt>
 <dd><p>which quarto column to show tables in</p></dd>
 
@@ -92,7 +97,7 @@
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">scroll_table</span><span class="op">(</span><span class="va">LETTERS</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "\n```{r}\n#| echo: false\n\n# table data\ntable &lt;- structure(list(c(\"A\", \"B\", \"C\", \"D\", \"E\", \"F\", \"G\", \"H\", \"I\", \n\"J\", \"K\", \"L\", \"M\", \"N\", \"O\", \"P\", \"Q\", \"R\", \"S\", \"T\", \"U\", \"V\", \n\"W\", \"X\", \"Y\", \"Z\")), names = \"\", class = \"data.frame\", row.names = c(NA, \n-26L))\n\n# table options\ncd &lt;- list()\noptions &lt;- list(dom = \"t\", ordering = FALSE, columnDefs = cd , scrollY = 200)\n\n# display table\nDT::datatable(table, options, selection = \"none\", rownames = FALSE)\n```\n"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "\n```{r}\n#| echo: false\n\n# table data\ntable &lt;- structure(list(c(\"A\", \"B\", \"C\", \"D\", \"E\", \"F\", \"G\", \"H\", \"I\", \n\"J\", \"K\", \"L\", \"M\", \"N\", \"O\", \"P\", \"Q\", \"R\", \"S\", \"T\", \"U\", \"V\", \n\"W\", \"X\", \"Y\", \"Z\")), names = \"\", class = \"data.frame\", row.names = c(NA, \n-26L))\n\n# table options\ncd &lt;- list()\noptions &lt;- list(dom = \"t\", ordering = FALSE, columnDefs = cd , scrollY = 200)\n\n# display table\nDT::datatable(table, options, selection = \"none\", rownames = FALSE, escape = FALSE)\n```\n"</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
