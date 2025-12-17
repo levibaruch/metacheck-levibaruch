@@ -29,7 +29,7 @@ The github functions all work with the following formats for referring to reposi
 * `"https://github.com/{username}/{repo}.git"`  
 * `"https://github.com/{username}/{repo}/{...}"`  
 
-The `github_repo()` function returns the simplified format of. repo name, and an error if the repository in inaccessible.
+The `github_repo()` function returns the simplified format of. repo name, and NULL if the repository in inaccessible.
 
 ```{r}
 github_repo("https://github.com/scienceverse/metacheck.git")

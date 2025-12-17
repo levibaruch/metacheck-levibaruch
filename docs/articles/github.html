@@ -43,7 +43,8 @@
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
-<li class="nav-item"><a class="nav-link" href="../articles/metacheck.html">Get started</a></li>
+<li class="nav-item"><a class="nav-link" href="../articles/metacheck.html">Get Started</a></li>
+<li class="nav-item"><a class="nav-link" href="../report-example.html">Example Report</a></li>
 <li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="active nav-item"><a class="nav-link" href="../articles/index.html">Articles</a></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
@@ -110,13 +111,13 @@ referring to repositories:</p>
 <li><code>"https://github.com/{username}/{repo}/{...}"</code></li>
 </ul>
 <p>The <code><a href="../reference/github_repo.html">github_repo()</a></code> function returns the simplified format
-of. repo name, and an error if the repository in inaccessible.</p>
+of. repo name, and NULL if the repository in inaccessible.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/github_repo.html">github_repo</a></span><span class="op">(</span><span class="st">"https://github.com/scienceverse/metacheck.git"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "scienceverse/metacheck"</span></span></code></pre></div>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/github_repo.html">github_repo</a></span><span class="op">(</span><span class="st">"scienceverse/checkpaper"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "unavailable"</span></span></code></pre></div>
+<span><span class="co">#&gt; NULL</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="github_readme">github_readme<a class="anchor" aria-label="anchor" href="#github_readme"></a>
@@ -156,17 +157,17 @@ of. repo name, and an error if the repository in inaccessible.</p>
 languages, as detected and classified by GitHub.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/github_languages.html">github_languages</a></span><span class="op">(</span><span class="st">"scienceverse/metacheck"</span><span class="op">)</span></span>
-<span><span class="co">#&gt;      language   bytes</span></span>
-<span><span class="co">#&gt; 1           R 6211254</span></span>
-<span><span class="co">#&gt; 2        HTML 5800260</span></span>
-<span><span class="co">#&gt; 3         TeX   58985</span></span>
-<span><span class="co">#&gt; 4        AMPL    7571</span></span>
-<span><span class="co">#&gt; 5      Python    6986</span></span>
-<span><span class="co">#&gt; 6         CSS    3358</span></span>
-<span><span class="co">#&gt; 7  JavaScript    1018</span></span>
-<span><span class="co">#&gt; 8  Dockerfile     929</span></span>
-<span><span class="co">#&gt; 9        SCSS      19</span></span>
-<span><span class="co">#&gt; 10      Shell      17</span></span></code></pre></div>
+<span><span class="co">#&gt;                      repo   language   bytes</span></span>
+<span><span class="co">#&gt; 1  scienceverse/metacheck          R 8101333</span></span>
+<span><span class="co">#&gt; 2  scienceverse/metacheck       HTML 7739374</span></span>
+<span><span class="co">#&gt; 3  scienceverse/metacheck        TeX   58985</span></span>
+<span><span class="co">#&gt; 4  scienceverse/metacheck       AMPL    7571</span></span>
+<span><span class="co">#&gt; 5  scienceverse/metacheck     Python    6986</span></span>
+<span><span class="co">#&gt; 6  scienceverse/metacheck        CSS    3358</span></span>
+<span><span class="co">#&gt; 7  scienceverse/metacheck JavaScript    1018</span></span>
+<span><span class="co">#&gt; 8  scienceverse/metacheck Dockerfile     929</span></span>
+<span><span class="co">#&gt; 9  scienceverse/metacheck       SCSS      19</span></span>
+<span><span class="co">#&gt; 10 scienceverse/metacheck      Shell      17</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="github_files">github_files<a class="anchor" aria-label="anchor" href="#github_files"></a>
@@ -234,7 +235,7 @@ directory, non-recursively.</p>
 <span><span class="co">#&gt; 12 34303           md   text</span></span>
 <span><span class="co">#&gt; 13     0                 dir</span></span>
 <span><span class="co">#&gt; 14  2406                file</span></span>
-<span><span class="co">#&gt; 15 14147           md   text</span></span>
+<span><span class="co">#&gt; 15 14325           md   text</span></span>
 <span><span class="co">#&gt; 16     0                 dir</span></span>
 <span><span class="co">#&gt; 17     0                 dir</span></span>
 <span><span class="co">#&gt; 18   887           md   text</span></span>
@@ -304,8 +305,8 @@ with items named “repo”, “readme”, “languages”, and “files”.</p>
 <span><span class="co">#&gt; 2 text</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $languages</span></span>
-<span><span class="co">#&gt; [1] language</span></span>
-<span><span class="co">#&gt; &lt;0 rows&gt; (or 0-length row.names)</span></span></code></pre></div>
+<span><span class="co">#&gt;                repo language bytes</span></span>
+<span><span class="co">#&gt; 1 scienceverse/demo     &lt;NA&gt;    NA</span></span></code></pre></div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
