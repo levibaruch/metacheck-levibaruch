@@ -356,18 +356,17 @@ preregistration.</p>
 <span></span>
 <span><span class="va">llm_response</span><span class="op">$</span><span class="va">answer</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"&gt; "</span>, x <span class="op">=</span> <span class="va">_</span><span class="op">)</span></span></code></pre></div>
 <blockquote>
-<p>The sentence that corresponds to the plan is: “We tested 39 lemurs
-living at the Duke Lemur Center … We assessed four taxonomic groups:
-ruffed lemurs (Varecia species, n = 10), Coquerel’s sifakas (Propithecus
-coquereli, n = 10), ringtailed lemurs (Lemur catta, n = 10), and
-mongoose lemurs (Eulemur mongoz, n = 9).”</p>
+<p>The sentence that corresponds to the plan is: “We assessed four
+taxonomic groups: ruffed lemurs (Varecia species, n = 10), Coquerel’s
+sifakas (Propithecus coquereli, n = 10), ringtailed lemurs (Lemur catta,
+n = 10), and mongoose lemurs (Eulemur mongoz, n = 9).”</p>
 </blockquote>
 <p>The authors deviated from their preregistration in the sense that
 they planned to test a minimum of 10 and a maximum of 15 individuals for
 each species, but they actually tested 10 ruffed lemurs, 10 Coquerel’s
-sifakas, 10 ring-tailed lemurs, and 9 mongoose lemurs. The number of
-mongoose lemurs is below the planned minimum, so there is a minor
-deviation from the plan.</p>
+sifakas, 10 ring-tailed lemurs, and 9 mongoose lemurs. The deviation is
+minor, as the number of mongoose lemurs is just one less than the
+planned minimum.</p>
 <p>As we see, the LLM does a very good job evaluating whether the
 authors adhered to their preregistration in terms of the sample size.
 The long-run performance of this automated evaluation needs to be
@@ -635,17 +634,15 @@ B was originally intended to be another 60 participants, but data
 collection was interrupted because of the COVID-19 pandemic; we shut
 down all laboratory testing on March 13, 2020.</p>
 <p>LLM Assessment:</p>
-<p>The authors deviated from their preregistration in terms of the
-sample size for cohort B. They had planned to collect data from 60
-participants in each cohort, but due to the COVID-19 pandemic, data
-collection was interrupted, and they were only able to collect data from
-56 participants in cohort B. However, for cohort A, they were able to
-collect data from 60 participants as planned, but after excluding some
-participants, the final sample size was 56 (n = 60; 2 participants were
-excluded due to poor performance, and 1 participant was excluded due to
-an error by the experimenter, and 1 participant’s age was excluded from
-the mean calculation but this does not affect the sample size for
-analysis).</p>
+<p>The sentence that corresponds to the plan is: “Here, we sought to
+collect data from 60 participants in each cohort.”</p>
+<p>The authors deviated from their preregistration with respect to the
+sample size in cohort B, where they initially intended to collect data
+from 60 participants but were only able to collect data from 56
+participants due to the COVID-19 pandemic. However, in cohort A, they
+were able to collect data from 60 participants as planned, although 3
+participants were excluded from the reported results due to poor
+performance.</p>
 <p>It fails gracefully if there are no links.</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">paper</span> <span class="op">&lt;-</span> <span class="va">psychsci</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>

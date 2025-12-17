@@ -69,7 +69,11 @@
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">ref</span> <span class="op">&lt;-</span> <span class="st">"Lakens, D., Mesquida, C., Rasti, S., &amp; Ditroilo, M. (2024). The benefits of preregistration and Registered Reports. Evidence-Based Toxicology, 2(1)."</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">ref</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  <span class="st">"Lakens, D., Mesquida, C., Rasti, S., &amp; Ditroilo, M. (2024)."</span>,</span></span>
+<span class="r-in"><span>  <span class="st">"The benefits of preregistration and Registered Reports."</span>,</span></span>
+<span class="r-in"><span>  <span class="st">"Evidence-Based Toxicology, 2(1)."</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co"># \donttest{</span></span></span>
 <span class="r-in"><span>  <span class="va">doi</span> <span class="op">&lt;-</span> <span class="fu">get_doi</span><span class="op">(</span><span class="va">ref</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
