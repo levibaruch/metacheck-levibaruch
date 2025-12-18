@@ -34,7 +34,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">metacheck</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9061</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9062</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -91,20 +91,19 @@ will share more modules.</p>
 text.</p>
 <p>*** INTRO **<em> </em> causal_claims: List all sentences that make
 causal claims.</p>
-<p>*** METHOD **<em> </em> aspredicted: Get data from AsPredicted
-pre-registrations in a structured way * power: Find power analyses and
-return their components. * prereg_check: Retrieve information from
-preregistrations, make then easier to check.</p>
+<p>*** METHOD **<em> </em> power: Find power analyses and return their
+components. * prereg_check: Retrieve information from preregistrations,
+make then easier to check.</p>
 <p>*** RESULTS **<em> </em> all_p_values: List all p-values in the text,
 returning the matched text (e.g., ‘p = 0.04’) and document location in a
 table. * code_check: Retrieve information r files. * effect_size: Detect
 t-tests and F-tests with missing effect sizes * exact_p: List any
 p-values reported with insufficient precision (e.g., p &lt; .05 or p =
 n.s.) * marginal: List all sentences that describe an effect as
-‘marginally significant’. * nonsignificant_pvalue: This module checks
-for imprecisely reported p values. If p &gt; .05 is detected, it warns
-for misinterpretations. * statcheck: Check consistency of p-values and
-test statistics</p>
+‘marginally significant’. * nonsig_p: This module checks for imprecisely
+reported p values. If p &gt; .05 is detected, it warns for
+misinterpretations. * statcheck: Check consistency of p-values and test
+statistics</p>
 <p>*** REFERENCE **<em> </em> miscitation: Check for frequently miscited
 papers. This module is just a proof of concept – the miscite database is
 not yet populated with real examples. * ref_consistency: Check if all
@@ -112,9 +111,7 @@ references are cited and all citations are referenced * reference_check:
 This module checks references. It warns for missing DOI’s, citations in
 the RetractionWatch database, citations that have comments on pubpeer
 (excluding Statcheck comments), and citations of original studies for
-which replication studies exist in the Replication Database. *
-retractionwatch: Flag any cited papers in the RetractionWatch
-database</p>
+which replication studies exist in the Replication Database.</p>
 <p>Use <code>module_help("module_name")</code> for help with a specific
 module</p>
 </div>
@@ -201,7 +198,7 @@ function.</p>
 <code class="sourceCode R"><span><span class="va">mo</span><span class="op">$</span><span class="va">report</span></span></code></pre></div>
 <pre><code><span><span class="co">#&gt; [1] "We found 1 imprecise *p* value out of 3 detected. Reporting *p* values imprecisely (e.g., *p* &lt; .05) reduces transparency, reproducibility, and re-use (e.g., in *p* value meta-analyses). Best practice is to report exact p-values with three decimal places (e.g., *p* = .032) unless *p* values are smaller than 0.001, in which case you can use *p* &lt; .001."                                                                                                                                                                                                                                                    </span></span>
 <span><span class="co">#&gt; [2] "\n```{r}\n#| echo: false\n\n# table data\ntable &lt;- structure(list(\"P-Value\" = \"p &gt; .05\", Sentence = \"There was no effect of experience on the reduction in errors when using the tool (p &gt; .05), as the correlation was non-significant.\"), row.names = c(NA, \n-1L), class = c(\"tbl_df\", \"tbl\", \"data.frame\"))\n\n# table options\ncd &lt;- list(list(targets = 0, width = \"10%\"), list(targets = 1, width = \"90%\"))\noptions &lt;- list(dom = \"t\", ordering = FALSE, columnDefs = cd )\n\n# display table\nDT::datatable(table, options, selection = \"none\", rownames = FALSE, escape = FALSE)\n```\n"</span></span>
-<span><span class="co">#&gt; [3] "::: {.callout-tip title=\"Learn More\" collapse=\"true\"}\n\nThe APA manual states: Report exact *p* values (e.g., *p* = .031) to two or three decimal places. However, report *p* values less than .001 as *p* &lt; .001. However, 2 decimals is too imprecise for many use-cases (e.g., a *p* value meta-analysis), so report *p* values with three digits.\n\nAmerican Psychological Association (2020). _Publication manual of the\nAmerican Psychological Association_, 7 edition. American Psychological\nAssociation.\n\n:::\n"</span></span></code></pre>
+<span><span class="co">#&gt; [3] "::: {.callout-tip title=\"Learn More\" collapse=\"true\"}\n\nThe APA manual states: Report exact *p* values (e.g., *p* = .031) to two or three decimal places. However, report *p* values less than .001 as *p* &lt; .001. However, 2 decimals is too imprecise for many use-cases (e.g., a *p* value meta-analysis), so report *p* values with three digits.\n\nAmerican Psychological Association (2020). _Publication manual of the American Psychological Association_, 7 edition. American Psychological Association.\n\n:::\n"</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="paper">Paper<a class="anchor" aria-label="anchor" href="#paper"></a>
@@ -956,10 +953,10 @@ referenced.</p>
 <span><span class="co">#&gt; 9     &lt;NA&gt;</span></span>
 <span><span class="co">#&gt; 10    &lt;NA&gt;</span></span>
 <span><span class="co">#&gt;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ref</span></span>
-<span><span class="co">#&gt; 1                                                                                                                                                                                                                                                                                                                                                    Jones BC, Hahn AC, Fisher CI, Wang H, Kandrik M, Tybur JM, Debruine LM (2018). “Hormonal correlates of pathogen disgust: Testing the compensatory prophylaxis hypothesis.” _Evolution and Human Behavior_, *39*, 166-169.</span></span>
-<span><span class="co">#&gt; 2                                                                                                                                                                                                                                                                                              Jones BC, Hahn AC, Fisher CI, Wang H, Kandrik M, Tybur JM, Debruine LM (2018b). “Reply to Fleischman and Fessler's (2018) comment on "Hormonal correlates of pathogen disgust: Testing the compensatory prophylaxis hypothesis.” _Evolution and Human Behavior_, *39*, 470-471.</span></span>
-<span><span class="co">#&gt; 3                                                                                                                                                                                                                                                                                                                                                                                                                                                        Curtis VA (2014). “Infection-avoidance behaviour in humans and other animals.” _Trends in Immunology_, *35*, 457-464.</span></span>
-<span><span class="co">#&gt; 4                                                                                                                                                                                                                                                                                                    Tybur JM, Inbar Y, Aarøe L, Barclay P, Barlow FK, De Barra M, Žeželj .., I (2016). “Parasite stress and pathogen avoidance relate to distinct dimensions of political ideology across 30 nations.” _Proceedings of the National Academy of Sciences_, *113*, 12408-12413.</span></span>
+<span><span class="co">#&gt; 1                                                                                                                                                                                                                                                                                                                                           Hormonal correlates of pathogen disgust: Testing the compensatory prophylaxis hypothesis, B, C, Jones, A, C, Hahn, C, I, Fisher, H, Wang, M, Kandrik, J, M, Tybur, L, M, Debruine, Evolution and Human Behavior, 2018, 39, 166-169</span></span>
+<span><span class="co">#&gt; 2                                                                                                                                                                                                                                                                                     Reply to Fleischman and Fessler's (2018) comment on "Hormonal correlates of pathogen disgust: Testing the compensatory prophylaxis hypothesis, B, C, Jones, A, C, Hahn, C, I, Fisher, H, Wang, M, Kandrik, J, M, Tybur, L, M, Debruine, Evolution and Human Behavior, 2018b, 39, 470-471</span></span>
+<span><span class="co">#&gt; 3                                                                                                                                                                                                                                                                                                                                                                                                                                                             Infection-avoidance behaviour in humans and other animals, V, A, Curtis, Trends in Immunology, 2014, 35, 457-464</span></span>
+<span><span class="co">#&gt; 4                                                                                                                                                                                                                                                                                               Parasite stress and pathogen avoidance relate to distinct dimensions of political ideology across 30 nations, J, M, Tybur, Y, Inbar, L, Aarøe, P, Barclay, F, K, Barlow, M, De Barra, ., ., Žeželj, I, Proceedings of the National Academy of Sciences, 2016, 113, 12408-12413</span></span>
 <span><span class="co">#&gt; 5  Analyses of reaction times revealed that illness recency interacted with distractor type: The 28 participants who had recently been ill took 38 ms longer to identify the targets after disfigured-face distractors relative to typicalface distractors (SD = 65.25, d z = 0.58), whereas reaction times did not differ across distractor face types for the 66 participants who had not recently been ill (mean difference = 4 ms faster to identify targets after disfiguredface distractors, SD = 58.32, d z = 0.07; J K Maner, personal communication, April 25, 2018).</span></span>
 <span><span class="co">#&gt; 6                                                                                                                                                                                                Although the studies summarized above have pointed to a relation between immunological resistance and avoidance, others have found no relation between progesterone and disgust sensitivity ( Jones et al., 2018a), infection history and disgust sensitivity (de Barra, Islam, &amp; Curtis, 2014), and ecological pathogen stress and disgust sensitivity (Tybur et al., 2016).</span></span>
 <span><span class="co">#&gt; 7                                                                                                                                                                                                Although the studies summarized above have pointed to a relation between immunological resistance and avoidance, others have found no relation between progesterone and disgust sensitivity ( Jones et al., 2018a), infection history and disgust sensitivity (de Barra, Islam, &amp; Curtis, 2014), and ecological pathogen stress and disgust sensitivity (Tybur et al., 2016).</span></span>
