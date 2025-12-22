@@ -13,7 +13,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">metacheck</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9062</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9063</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -217,7 +217,7 @@
       </dl></div><div class="section level2">
       <h2 id="module-helpers">Module Helpers<a class="anchor" aria-label="anchor" href="#module-helpers"></a></h2>
 
-
+      <div class="section-desc"><p>These functions help module writers make consistently formatted report text.</p></div>
 
 
     </div><div class="section level2">
@@ -363,6 +363,12 @@
         <dd>Retrieve info from the OSF by ID</dd>
       </dl><dl><dt>
 
+          <code><a href="osf_type.html">osf_type()</a></code>
+
+        </dt>
+        <dd>Get OSF GUID Type</dd>
+      </dl><dl><dt>
+
           <code><a href="osf_get_all_pages.html">osf_get_all_pages()</a></code>
 
         </dt>
@@ -379,41 +385,6 @@
 
         </dt>
         <dd>Get A list of preprints from the OSF</dd>
-      </dl></div><div class="section level2">
-      <h2 id="aspredicted-researchbox-functions">AsPredicted/ResearchBox Functions<a class="anchor" aria-label="anchor" href="#aspredicted-researchbox-functions"></a></h2>
-
-
-
-
-    </div><div class="section level2">
-
-
-
-
-      <dl><dt>
-
-          <code><a href="aspredicted_links.html">aspredicted_links()</a></code>
-
-        </dt>
-        <dd>Find AsPredicted Links in Papers</dd>
-      </dl><dl><dt>
-
-          <code><a href="aspredicted_retrieve.html">aspredicted_retrieve()</a></code>
-
-        </dt>
-        <dd>Retrieve info from AsPredicted by URL</dd>
-      </dl><dl><dt>
-
-          <code><a href="rbox_links.html">rbox_links()</a></code>
-
-        </dt>
-        <dd>Find ResearchBox Links in Papers</dd>
-      </dl><dl><dt>
-
-          <code><a href="rbox_retrieve.html">rbox_retrieve()</a></code>
-
-        </dt>
-        <dd>Retrieve info from ResearchBox by URL</dd>
       </dl></div><div class="section level2">
       <h2 id="github-functions">GitHub Functions<a class="anchor" aria-label="anchor" href="#github-functions"></a></h2>
 
@@ -461,6 +432,41 @@
 
         </dt>
         <dd>Get Languages from GitHub Repo</dd>
+      </dl></div><div class="section level2">
+      <h2 id="archive-functions">Archive Functions<a class="anchor" aria-label="anchor" href="#archive-functions"></a></h2>
+
+
+
+
+    </div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="aspredicted_links.html">aspredicted_links()</a></code>
+
+        </dt>
+        <dd>Find AsPredicted Links in Papers</dd>
+      </dl><dl><dt>
+
+          <code><a href="aspredicted_retrieve.html">aspredicted_retrieve()</a></code>
+
+        </dt>
+        <dd>Retrieve info from AsPredicted by URL</dd>
+      </dl><dl><dt>
+
+          <code><a href="rbox_links.html">rbox_links()</a></code>
+
+        </dt>
+        <dd>Find ResearchBox Links in Papers</dd>
+      </dl><dl><dt>
+
+          <code><a href="rbox_retrieve.html">rbox_retrieve()</a></code>
+
+        </dt>
+        <dd>Retrieve info from ResearchBox by URL</dd>
       </dl></div><div class="section level2">
       <h2 id="integrations">Integrations<a class="anchor" aria-label="anchor" href="#integrations"></a></h2>
 
@@ -534,22 +540,22 @@
         <dd>Get date FReD was updated</dd>
       </dl><dl><dt>
 
-          <code><a href="get_doi.html">get_doi()</a></code>
-
-        </dt>
-        <dd>Get DOI from Reference</dd>
-      </dl><dl><dt>
-
           <code><a href="openalex.html">openalex()</a></code>
 
         </dt>
         <dd>Get OpenAlex info for a paper</dd>
       </dl><dl><dt>
 
-          <code><a href="crossref.html">crossref()</a></code>
+          <code><a href="crossref_doi.html">crossref_doi()</a></code>
 
         </dt>
-        <dd>Crossref info</dd>
+        <dd>CrossRef Info from DOI</dd>
+      </dl><dl><dt>
+
+          <code><a href="crossref_query.html">crossref_query()</a></code>
+
+        </dt>
+        <dd>Look up Reference in CrossRef</dd>
       </dl><dl><dt>
 
           <code><a href="pubpeer_comments.html">pubpeer_comments()</a></code>

@@ -322,8 +322,7 @@ scroll_table(
   table, 
   colwidths = c(.1, .9), # use NA for auto, numbers <=1 are %, > 1 are px, 
                          # or use characters, e.g., c("3em", NA)
-  scroll_above = 2,      # if table length <= this, show all rows, no scrolling
-  height = 200,          # height of scroll windown in pixels
+  maxrows = 2,           # if table length <= this, show all rows, no paginations
   column = "body"        # page: spans full page, margin: just right margin
 ) |> cat()
 ```
