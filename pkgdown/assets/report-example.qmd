@@ -2,8 +2,8 @@
 title: MetaCheck Report
 subtitle: "To Err is Human: An Empirical Investigation"
 metacheck:
-  version: "0.0.0.9063"
-  report-created: "2025-12-23"
+  version: "0.0.0.9064"
+  report-created: "2025-12-29"
 format:
   html:
     theme: 
@@ -95,7 +95,7 @@ Metacheck is under continuous development. Issues can be submitted [on Github](h
     -  Libraries were loaded in multiple places.
     -  Some code files had no comments.
     -  No README file was found.  
-- [DOI Check](#doi-check){.yellow}: We checked 1 reference in CrossRef and found 1 missing DOI  
+- [DOI Check](#doi-check){.yellow}: We checked 1 reference in CrossRef and found 1 missing DOI.   
 - [Reference Accuracy](#reference-accuracy){.yellow}: We checked 3 references with DOIs in CrossRef and found  matches for 2.  
 - [Replication Check](#replication-check){.info}: You cited 1 article in the FReD replication database.  
 - [RetractionWatch](#retractionwatch){.info}: You cited 1 article in the RetractionWatch database.  
@@ -686,7 +686,7 @@ This module was developed by Daniel Lakens
 
 ### DOI Check {.yellow}
 
-We checked 1 reference in CrossRef and found 1 missing DOI
+We checked 1 reference in CrossRef and found 1 missing DOI. 
 
 Double check any references listed in the tables below. The match score gives an indication of how good the match was. Many books do not have a DOI or are not listed in CrossRef. Garbled references are usually a result of poor parsing of the paper by grobid; we are working on more accurate alternatives.
 
@@ -695,7 +695,7 @@ Double check any references listed in the tables below. The match score gives an
 
 # table data ------------------------------------
 table <- structure(list("Found DOI" = "<a href='https://doi.org/10.1177/2515245918770963' target='_blank'>doi.org/10.1177/2515245918770963</a>", 
-    "Match Score" = 79, "Original Reference" = "Lakens D (2018). &ldquo;Equivalence testing for psychological research.&rdquo; <em>Advances in Methods and Practices in Psychological Science</em>, <b>1</b>, 259-270."), row.names = 1L, class = "data.frame")
+    "Match Score" = 70, "Original Reference" = "Lakens D (2018). &ldquo;Equivalence testing for psychological research.&rdquo; <em>Advances in Methods and Practices in Psychological Science</em>, <b>1</b>, 259-270."), row.names = 1L, class = "data.frame")
 
 # table setup -----------------------------------
 cd <- list()
@@ -705,7 +705,7 @@ DT::datatable(table, options, selection = "none", rownames = FALSE, escape = FAL
 
 ::: {.callout-note title="How It Works" collapse="true"}
 
-This module checks references for missing DOIs.
+This module checks references for missing DOIs or DOIs with an invalid format.
 
 This module was developed by Daniel Lakens and Lisa DeBruine
 
@@ -715,7 +715,7 @@ This module was developed by Daniel Lakens and Lisa DeBruine
 
 We checked 3 references with DOIs in CrossRef and found  matches for 2.
 
-Double check any references listed in the tables below. This tool has a high false positive rate. Mismatches may be because of problems with our parsing of references from your PDF (we're working on improving this), incorrect formatting in CrossRef, or minor differences in punctuation.
+Double check any references listed in the tables below. This tool has a high false positive rate.
 
 ```{r}
 #| echo: false
@@ -748,6 +748,12 @@ DT::datatable(table, options, selection = "none", rownames = FALSE, escape = FAL
 
 This module checks references for mismatches with CrossRef.
 
+It only looks up the DOIs originally present in your paper (not those found by ref_doi_check) and returns the bibliographic information.
+
+We then check that the title from your reference section is the same as the retrieved title (ignoring differences in capitalisation) and that all author last names in your reference section are also in the retrieved author list (we do not check first names or order yet).
+
+Mismatches may be because of problems with our parsing of references from your PDF (we're working on improving this), incorrect formatting in CrossRef, or minor differences in punctuation.
+
 This module was developed by Daniel Lakens and Lisa DeBruine
 
 :::
@@ -763,8 +769,7 @@ Check if you are aware of the replication studies, and cite them where appropria
 
 # table data ------------------------------------
 table <- structure(list(Reference = "Gangestad SW, Thornhill R (1998). &ldquo;Menstrual cycle variation in women's preferences for the scent of symmetrical men.&rdquo; <em>Proceedings Biological Sciences</em>, <b>22</b>, 927-933. <a href=\"https://doi.org/10.1098/rspb.1998.0380\">doi:10.1098/rspb.1998.0380</a>.", 
-    "Replication Reference" = "Jones, B. C., Hahn, A. C., Fisher, C. I., Wang, H., Kandrik, M., Han, C., Fasolt, V., Morrison, D., Lee, A. J., Holzleitner, I. J., O’Shea, K. J., Roberts, S. C., Little, A. C., & DeBruine, L. M. (2018). No Compelling Evidence that Preferences for Facial Masculinity Track Changes in Women’s Hormonal Status. Psychological Science, 29(6), 996-1005. https://doi.org/10.1177/0956797618760197 <a href='https://doi.org/10.1177/0956797618760197' target='_blank'>doi.org/10.1177/0956797618760197</a>"), row.names = c(NA, 
--1L), class = "data.frame")
+    "Replication Reference" = "Jones, B. C., Hahn, A. C., Fisher, C. I., Wang, H., Kandrik, M., Han, C., Fasolt, V., Morrison, D., Lee, A. J., Holzleitner, I. J., O’Shea, K. J., Roberts, S. C., Little, A. C., & DeBruine, L. M. (2018). No Compelling Evidence that Preferences for Facial Masculinity Track Changes in Women’s Hormonal Status. Psychological Science, 29(6), 996-1005. https://doi.org/10.1177/0956797618760197 <a href='https://doi.org/10.1177/0956797618760197' target='_blank'>doi.org/10.1177/0956797618760197</a>"), row.names = 1L, class = "data.frame")
 
 # table setup -----------------------------------
 cd <- list(list(targets = 0, width = "50%"), list(targets = 1, width = "50%"))
