@@ -18,6 +18,7 @@
 <url><loc>https://scienceverse.github.io/metacheck/reference/FReD.html</loc></url>
 <url><loc>https://scienceverse.github.io/metacheck/reference/FReD_date.html</loc></url>
 <url><loc>https://scienceverse.github.io/metacheck/reference/FReD_update.html</loc></url>
+<url><loc>https://scienceverse.github.io/metacheck/reference/_report.html</loc></url>
 <url><loc>https://scienceverse.github.io/metacheck/reference/accuracy.html</loc></url>
 <url><loc>https://scienceverse.github.io/metacheck/reference/add_author.html</loc></url>
 <url><loc>https://scienceverse.github.io/metacheck/reference/apa_authors.html</loc></url>
@@ -44,6 +45,9 @@
 <url><loc>https://scienceverse.github.io/metacheck/reference/demopdf.html</loc></url>
 <url><loc>https://scienceverse.github.io/metacheck/reference/demoxml.html</loc></url>
 <url><loc>https://scienceverse.github.io/metacheck/reference/distinctive_words.html</loc></url>
+<url><loc>https://scienceverse.github.io/metacheck/reference/doi_clean.html</loc></url>
+<url><loc>https://scienceverse.github.io/metacheck/reference/doi_resolves.html</loc></url>
+<url><loc>https://scienceverse.github.io/metacheck/reference/doi_valid_format.html</loc></url>
 <url><loc>https://scienceverse.github.io/metacheck/reference/dot-onAttach.html</loc></url>
 <url><loc>https://scienceverse.github.io/metacheck/reference/dot-onLoad.html</loc></url>
 <url><loc>https://scienceverse.github.io/metacheck/reference/email.html</loc></url>
@@ -91,6 +95,8 @@
 <url><loc>https://scienceverse.github.io/metacheck/reference/online.html</loc></url>
 <url><loc>https://scienceverse.github.io/metacheck/reference/op-null-default.html</loc></url>
 <url><loc>https://scienceverse.github.io/metacheck/reference/openalex.html</loc></url>
+<url><loc>https://scienceverse.github.io/metacheck/reference/openalex_doi.html</loc></url>
+<url><loc>https://scienceverse.github.io/metacheck/reference/openalex_query.html</loc></url>
 <url><loc>https://scienceverse.github.io/metacheck/reference/orcid_person.html</loc></url>
 <url><loc>https://scienceverse.github.io/metacheck/reference/osf_api_calls.html</loc></url>
 <url><loc>https://scienceverse.github.io/metacheck/reference/osf_api_calls_inc.html</loc></url>
