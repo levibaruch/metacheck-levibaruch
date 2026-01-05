@@ -13,7 +13,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">metacheck</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9064</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9065</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -93,7 +93,7 @@
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">scroll_table</span><span class="op">(</span><span class="va">LETTERS</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "\n```{r}\n#| echo: false\n\n\n# table data ------------------------------------\ntable &lt;- structure(list(c(\"A\", \"B\", \"C\", \"D\", \"E\", \"F\", \"G\", \"H\", \"I\", \n\"J\", \"K\", \"L\", \"M\", \"N\", \"O\", \"P\", \"Q\", \"R\", \"S\", \"T\", \"U\", \"V\", \n\"W\", \"X\", \"Y\", \"Z\")), names = \"\", class = \"data.frame\", row.names = c(NA, \n-26L))\n\n# table setup -----------------------------------\ncd &lt;- list()\noptions &lt;- list(dom = \"&lt;'top' p&gt;\", ordering = FALSE, pageLength = 2, columnDefs = cd)\nDT::datatable(table, options, selection = \"none\", rownames = FALSE, escape = FALSE)\n```\n"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "\n```{r}\n#| echo: false\n\n\n# table data --------------------------------------\ntable &lt;- structure(list(c(\"A\", \"B\", \"C\", \"D\", \"E\", \"F\", \"G\", \"H\", \"I\", \n\"J\", \"K\", \"L\", \"M\", \"N\", \"O\", \"P\", \"Q\", \"R\", \"S\", \"T\", \"U\", \"V\", \n\"W\", \"X\", \"Y\", \"Z\")), names = \"\", class = \"data.frame\", row.names = c(NA, \n-26L))\n\n# display table -----------------------------------\nmetacheck::report_table(table, \"auto\", 2, FALSE)\n```\n"</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

@@ -13,7 +13,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">metacheck</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9064</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9065</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -75,27 +75,48 @@
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
 <span class="r-in"><span>  <span class="fu">github_files</span><span class="op">(</span><span class="st">"scienceverse/metacheck"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                name             path</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1     .Rbuildignore    .Rbuildignore</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2           .github          .github</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3        .gitignore       .gitignore</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4       DESCRIPTION      DESCRIPTION</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5        LICENSE.md       LICENSE.md</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6         NAMESPACE        NAMESPACE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7           NEWS.md          NEWS.md</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8                 R                R</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9         README.md        README.md</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10 _metacheck.Rproj _metacheck.Rproj</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11           _stuff           _stuff</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12      codecov.yml      codecov.yml</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13             data             data</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14         data-raw         data-raw</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15             docs             docs</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16             inst             inst</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17              man              man</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18          pkgdown          pkgdown</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 19            tests            tests</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 20        vignettes        vignettes</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                      repo             clean_repo             name</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1  scienceverse/metacheck scienceverse/metacheck    .Rbuildignore</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2  scienceverse/metacheck scienceverse/metacheck          .github</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  scienceverse/metacheck scienceverse/metacheck       .gitignore</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4  scienceverse/metacheck scienceverse/metacheck      DESCRIPTION</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5  scienceverse/metacheck scienceverse/metacheck       LICENSE.md</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6  scienceverse/metacheck scienceverse/metacheck        NAMESPACE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7  scienceverse/metacheck scienceverse/metacheck          NEWS.md</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8  scienceverse/metacheck scienceverse/metacheck                R</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9  scienceverse/metacheck scienceverse/metacheck        README.md</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10 scienceverse/metacheck scienceverse/metacheck _metacheck.Rproj</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11 scienceverse/metacheck scienceverse/metacheck           _stuff</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12 scienceverse/metacheck scienceverse/metacheck      codecov.yml</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13 scienceverse/metacheck scienceverse/metacheck             data</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14 scienceverse/metacheck scienceverse/metacheck         data-raw</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15 scienceverse/metacheck scienceverse/metacheck             docs</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16 scienceverse/metacheck scienceverse/metacheck             inst</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17 scienceverse/metacheck scienceverse/metacheck              man</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18 scienceverse/metacheck scienceverse/metacheck          pkgdown</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19 scienceverse/metacheck scienceverse/metacheck            tests</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20 scienceverse/metacheck scienceverse/metacheck        vignettes</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                path</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1     .Rbuildignore</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2           .github</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3        .gitignore</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4       DESCRIPTION</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5        LICENSE.md</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6         NAMESPACE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7           NEWS.md</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8                 R</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9         README.md</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10 _metacheck.Rproj</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11           _stuff</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12      codecov.yml</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13             data</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14         data-raw</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15             docs</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16             inst</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17              man</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18          pkgdown</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19            tests</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20        vignettes</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                                      download_url</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1     https://raw.githubusercontent.com/scienceverse/metacheck/main/.Rbuildignore</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2                                                                            &lt;NA&gt;</span>
@@ -121,9 +142,9 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1    223 rbuildignore   file</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2      0       github    dir</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3    380    gitignore config</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4   2004                file</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4   2191                file</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 5  34303           md   text</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6   2539                file</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6   2612                file</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 7  16410           md   text</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 8      0                 dir</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 9    887           md   text</span>

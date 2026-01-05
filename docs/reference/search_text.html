@@ -13,7 +13,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">metacheck</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9064</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9065</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,7 +54,9 @@
 <span>  return <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"sentence"</span>, <span class="st">"paragraph"</span>, <span class="st">"div"</span>, <span class="st">"section"</span>, <span class="st">"match"</span>, <span class="st">"id"</span><span class="op">)</span>,</span>
 <span>  ignore.case <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  fixed <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  perl <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span>  perl <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  exclude <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  search_header <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -67,7 +69,7 @@
 
 
 <dt id="arg-pattern">pattern<a class="anchor" aria-label="anchor" href="#arg-pattern"></a></dt>
-<dd><p>the regex pattern to search for</p></dd>
+<dd><p>the regex pattern to search for, if a vector with length &gt; 1, the patterns will be searched separately and combined</p></dd>
 
 
 <dt id="arg-section">section<a class="anchor" aria-label="anchor" href="#arg-section"></a></dt>
@@ -88,6 +90,14 @@
 
 <dt id="arg-perl">perl<a class="anchor" aria-label="anchor" href="#arg-perl"></a></dt>
 <dd><p>logical. Should Perl-compatible regexps be used?</p></dd>
+
+
+<dt id="arg-exclude">exclude<a class="anchor" aria-label="anchor" href="#arg-exclude"></a></dt>
+<dd><p>should matches be included or excluded</p></dd>
+
+
+<dt id="arg-search-header">search_header<a class="anchor" aria-label="anchor" href="#arg-search-header"></a></dt>
+<dd><p>also search the header</p></dd>
 
 </dl></div>
     <div class="section level2">
