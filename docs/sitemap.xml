@@ -53,6 +53,8 @@
 <url><loc>https://scienceverse.github.io/metacheck/reference/email.html</loc></url>
 <url><loc>https://scienceverse.github.io/metacheck/reference/emojis.html</loc></url>
 <url><loc>https://scienceverse.github.io/metacheck/reference/expand_text.html</loc></url>
+<url><loc>https://scienceverse.github.io/metacheck/reference/extract_p_values.html</loc></url>
+<url><loc>https://scienceverse.github.io/metacheck/reference/extract_urls.html</loc></url>
 <url><loc>https://scienceverse.github.io/metacheck/reference/file_types.html</loc></url>
 <url><loc>https://scienceverse.github.io/metacheck/reference/filetype.html</loc></url>
 <url><loc>https://scienceverse.github.io/metacheck/reference/format_ref.html</loc></url>
@@ -64,6 +66,7 @@
 <url><loc>https://scienceverse.github.io/metacheck/reference/github_files.html</loc></url>
 <url><loc>https://scienceverse.github.io/metacheck/reference/github_info.html</loc></url>
 <url><loc>https://scienceverse.github.io/metacheck/reference/github_languages.html</loc></url>
+<url><loc>https://scienceverse.github.io/metacheck/reference/github_links.html</loc></url>
 <url><loc>https://scienceverse.github.io/metacheck/reference/github_readme.html</loc></url>
 <url><loc>https://scienceverse.github.io/metacheck/reference/github_repo.html</loc></url>
 <url><loc>https://scienceverse.github.io/metacheck/reference/index.html</loc></url>
@@ -142,6 +145,7 @@
 <url><loc>https://scienceverse.github.io/metacheck/reference/read.html</loc></url>
 <url><loc>https://scienceverse.github.io/metacheck/reference/read_xml.html</loc></url>
 <url><loc>https://scienceverse.github.io/metacheck/reference/report.html</loc></url>
+<url><loc>https://scienceverse.github.io/metacheck/reference/report_table.html</loc></url>
 <url><loc>https://scienceverse.github.io/metacheck/reference/retractionwatch.html</loc></url>
 <url><loc>https://scienceverse.github.io/metacheck/reference/rw_date.html</loc></url>
 <url><loc>https://scienceverse.github.io/metacheck/reference/rw_update.html</loc></url>
