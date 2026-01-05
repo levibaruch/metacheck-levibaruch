@@ -3,7 +3,7 @@ title: MetaCheck Report
 subtitle: "To Err is Human: An Empirical Investigation"
 metacheck:
   version: "0.0.0.9064"
-  report-created: "2026-01-03"
+  report-created: "2026-01-05"
 format:
   html:
     theme: 
@@ -79,22 +79,29 @@ Metacheck is under continuous development. Issues can be submitted [on Github](h
 
 ## Summary
 
-- [Funding Check](#funding-check){.red}: No funding statement was detected.  
+- [Open Practices Check](#open-practices-check){.green}: Data and code are shared.  
 - [COI Check](#coi-check){.red}: No conflict of interest statement was detected.  
+- [Funding Check](#funding-check){.red}: No funding statement was detected.  
 - [Preregistration Check](#preregistration-check){.info}: We found 2 preregistrations.  
+- [Randomization and Causal Claims](#randomization-and-causal-claims){.green}: 
+    -  We identified 1 sentence describing randomization.
+    -  No causal claims were observed in the title.
+    -  No causal claims were observed in the abstract.  
 - [Power Analysis Check](#power-analysis-check){.red}: We detected 1 potential power analysis.  
-- [Code Check](#code-check){.info}: 
+- [Exact P-Values](#exact-p-values){.red}: We found 1 imprecise *p* value out of 3 detected.  
+- [Non-Significant P Value Check](#non-significant-p-value-check){.yellow}: We found 2 non-significant p values that should be checked for appropriate interpretation.  
+- [Marginal Significance](#marginal-significance){.red}: You described 2 effects with terms related to 'marginally significant'.  
+- [Effect Sizes in t-tests and F-tests](#effect-sizes-in-t-tests-and-f-tests){.red}: We found 1 t-test and/or F-test where effect sizes are not reported.  
+- [StatCheck](#statcheck){.red}: 1 possible error in t-tests or F-tests  
+- [Code Check](#code-check){.yellow}: 
+    -  We found 4 R, SAS, SPSS, or Stata code files in the 5 searched repositories.
     -  Some files loaded in the code were missing in the repository.
     -  Hardcoded file paths were found.
     -  Libraries/imports were loaded in multiple places.
     -  Some code files had no comments.
-    -  No README file was found.  
-- [StatCheck](#statcheck){.red}: 1 possible error in t-tests or F-tests  
-- [Exact P-Values](#exact-p-values){.red}: We found 1 imprecise *p* value out of 3 detected.  
-- [Non-Significant P Value Check](#non-significant-p-value-check){.yellow}: We found 2 non-significant p values that should be checked for appropriate interpretation.  
-- [Effect Sizes in t-tests and F-tests](#effect-sizes-in-t-tests-and-f-tests){.red}: We found 1 t-test and/or F-test where effect sizes are not reported.  
-- [Marginal Significance](#marginal-significance){.red}: You described 2 effects with terms related to 'marginally significant'.  
+    -  We found 0 README files and 3 sources without READMEs: osf.io/cxjg4, https://github.com/Lakens/to_err_is_human, https://researchbox.org/4377.  
 - [DOI Check](#doi-check){.yellow}: We checked 1 reference in CrossRef and found 1 missing DOI.   
+- [Reference Accuracy](#reference-accuracy){.yellow}: We checked 3 references with DOIs in CrossRef and found  matches for 2.  
 - [Replication Check](#replication-check){.info}: You cited 1 article in the FReD replication database.  
 - [RetractionWatch](#retractionwatch){.info}: You cited 1 article in the RetractionWatch database.  
 - [Check PubPeer Comments](#check-pubpeer-comments){.info}: You cited 1 reference with comments in PubPeer.  
@@ -103,19 +110,29 @@ Metacheck is under continuous development. Issues can be submitted [on Github](h
 
 ## General Modules
 
-### Funding Check {.red}
+### Open Practices Check {.green}
 
-No funding statement was detected. Consider adding one.
+Data was openly shared for this article, based on the sentence "Data is also available from <https://osf.io/5tbm9> and code is also available from <https://osf.io/629bx>.".
+
+Code was openly shared for this article, based on the sentence "Data and analysis code is available on GitHub from <https://github.com/Lakens/to_err_is_human> and from <https://researchbox.org/4377>.".
+
+::: {.callout-tip title="Learn More" collapse="true"}
+
+Data and code sharing was determined using ODDPub. ODDPub searches for text expressions that indicate that an article shared Open Data or Open Code together with the publication.  More information on the package can be found at <https://github.com/quest-bih/oddpub>. The module only returns whether open data and code is found (the original package offers more fine-grained results). The tool was validated in the biomedical literature, see <https://osf.io/yv5rx/>.
+
+Riedel N, Kip M, Bobrov E (2020). &ldquo;ODDPub – a Text-Mining Algorithm to Detect Data Sharing in Biomedical Publications.&rdquo; <em>Data Science Journal</em>, <b>19</b>(1), 42. <a href="https://doi.org/10.5334/dsj-2020-042">doi:10.5334/dsj-2020-042</a>.
+
+:::
 
 ::: {.callout-note title="How It Works" collapse="true"}
 
-Identify and extract funding statements.
+This module incorporates ODDPub into metacheck. ODDPub is a text mining algorithm that detects which publications disseminated Open Data or Open Code together with the publication.
 
-The Funding Check module uses regular expressions to check sentences for words related to funding statements. It will return the sentences in which the conflict of interest statement was found.
+The Open Practices Check runs Open Data Detection in Publications (ODDPub). ODDPub searches for text expressions that indicate that an article shared Open Data or Open Code together with the publication. More information on the package can be found at <https://github.com/quest-bih/oddpub>. The module only returns whether open data and code is found (the original package offers more fine-grained results). The tool was validated in the biomedical literature, see <https://osf.io/yv5rx/>.
 
-The function was inspired by [rtransparent](https://github.com/serghiou/rtransparent), which is no longer maintained. For their validation, see [the paper](https://doi.org/10.1371/journal.pbio.3001107).
+ODDPub was developed by Nico Riedel, Vladislav Nachev, Miriam Kip, and Evgeny Bobrov at the QUEST Center for Transforming Biomedical Research, Berlin Institute of Health.
 
-Our version uses a more inclusive algorithm, which decreases false negatives (missing a potential funding statement) at the expense of increasing false positives (falsely detecting sentences as a funding statement).
+It might miss open data and code declarations when the words used in the manuscript are not in the pattern that ODDPub searches for, or when the repositories are not in the ODDpub code (e.g., ResearchBox).
 
 This module was developed by Daniel Lakens
 
@@ -134,6 +151,24 @@ The COI Check module uses regular expressions to check sentences for words relat
 The function was inspired by [rtransparent](https://github.com/serghiou/rtransparent), which is no longer maintained. For their validation, see [the paper](https://doi.org/10.1371/journal.pbio.3001107).
 
 Our version uses a more inclusive algorithm, which decreases false negatives (missing a potential COI) at the expense of increasing false positives (falsely detecting sentences as a COI statement).
+
+This module was developed by Daniel Lakens
+
+:::
+
+### Funding Check {.red}
+
+No funding statement was detected. Consider adding one.
+
+::: {.callout-note title="How It Works" collapse="true"}
+
+Identify and extract funding statements.
+
+The Funding Check module uses regular expressions to check sentences for words related to funding statements. It will return the sentences in which the conflict of interest statement was found.
+
+The function was inspired by [rtransparent](https://github.com/serghiou/rtransparent), which is no longer maintained. For their validation, see [the paper](https://doi.org/10.1371/journal.pbio.3001107).
+
+Our version uses a more inclusive algorithm, which decreases false negatives (missing a potential funding statement) at the expense of increasing false positives (falsely detecting sentences as a funding statement).
 
 This module was developed by Daniel Lakens
 
@@ -254,6 +289,65 @@ This module was developed by Daniel Lakens and Lisa DeBruine
 
 :::
 
+### Randomization and Causal Claims {.green}
+
+Journal Article Reporting Standards require details about randomization procedures, or how possible bias due to non-randomization is mitigated. This information is often not reported. Furthermore, researchers sometimes make causal claims that are not warranted, for example because there was no random assignment to conditions. This module checks how (non)randomization is reported, and checks for causal claims in the title and abstract. Researchers are asked to double check whether this information is reported completely and correctly.
+
+#### Randomization
+
+We identified 1 sentence describing randomization.
+
+```{r}
+#| echo: false
+
+# table data --------------------------------------
+table <- structure(list("We randomly assigned 50 scientists to a condition where their manuscript was automatically checked for errors, and 50 scientists to a control condition with a checklist."), names = "", class = "data.frame", row.names = c(NA, 
+-1L))
+
+# display table -----------------------------------
+metacheck::report_table(table, "auto", 2, FALSE)
+```
+
+If this was a study that contained random assignment to conditions, the journal article reporting standards (JARS) ask that you describe the following:
+
+1. Random assignment method: Procedure used to generate the random assignment sequence, including details of any restriction (e.g., blocking, stratification)
+
+2. Random assignment concealment: Whether sequence was concealed until interventions were assigned
+
+3. Random assignment implementation: Who generated the assignment sequence, who enrolled participants, who assigned participants to groups
+
+#### Causal Claims
+
+No causal claims were observed in the title.
+
+No causal claims were observed in the abstract.
+
+::: {.callout-tip title="Learn More" collapse="true"}
+
+For advice on how to make causal claims, and when not to, see:
+
+Antonakis J, Bendahan S, Jacquart P, Lalive R (2010). &ldquo;On making causal claims: A review and recommendations.&rdquo; <em>The Leadership Quarterly</em>, <b>21</b>(6), 1086&ndash;1120. <a href="https://doi.org/10.1016/j.leaqua.2010.10.010">doi:10.1016/j.leaqua.2010.10.010</a>.
+
+Grosz M, Rohrer J, Thoemmes F (2020). &ldquo;The Taboo Against Explicit Causal Inference in Nonexperimental Psychology.&rdquo; <em>Perspectives on Psychological Science</em>, <b>15</b>(5), 1243&ndash;1255. <a href="https://doi.org/10.1177/1745691620921521">doi:10.1177/1745691620921521</a>.
+
+For the APA journal articles reporting standards, see <https://apastyle.apa.org/jars>
+
+:::
+
+::: {.callout-note title="How It Works" collapse="true"}
+
+Aims to identify the presence of random assignment, and lists sentences that make causal claims in title or abstract.
+
+The Randomization and Causal Claims Check first uses regular expressions to check whether the manuscript contains a statement about randomization to conditions. Subsequently, it sends the title and abstract to a [machine learning classifier developed by Rasoul Norouzi](https://github.com/rasoulnorouzi/causal_relation_miner) that runs on [HuggingFace](https://huggingface.co/spaces/lakens/causal_sentences). Causal statements are identified. Researchers are recommended to double check if causal statements are warranted, especially if no sentences describing randomization were detected.
+
+The regular expressions can miss statements about randomization, or incorrectly assume there is a sentence describing randomization. The module can’t evaluate if the causal statements that are identified are warranted or not, and it only reminds users to double-check.
+
+If you want to improve the detection of sentences describing randomization, or otherwise improve the module, reach out to the Metacheck development team.
+
+This module was developed by Daniel Lakens
+
+:::
+
 ### Power Analysis Check {.red}
 
 We detected 1 potential power analysis.
@@ -313,157 +407,6 @@ This module was developed by Lisa DeBruine, Daniel Lakens and Cristian Mesquida
 :::
 
 ## Results Modules
-
-### Code Check {.info}
-
-Below, we describe some best coding practices and give the results of automatic evaluation of these practices in the code files below. This check may miss things or produce false positives if your scripts are less typical.
-
-```{r}
-#| echo: false
-
-# table data --------------------------------------
-table <- structure(list("Code File Name" = c("Papercheck Test", NA, "Public", 
-"bad.R", "bad.Rmd", "analysis.R", "Code/Study 1.r", "Codebook/Study 1 - csv - dataset 1.csv___CODEBOOK.csv", 
-"Codebook/Study 1.csv___CODEBOOK.csv", "Data/Study 1 - csv - dataset 1.csv", 
-"Data/Study 1.csv", "Materials/Study 1 - test txt file.txt", 
-"Table of Contents Box #4377.csv"), Download = c("<a href='NA'>download</a>", 
-"<a href='NA'>download</a>", "<a href='NA'>download</a>", "<a href='https://osf.io/download/6935bc117049c887a125cb25/'>download</a>", 
-"<a href='https://osf.io/download/uq347/'>download</a>", "<a href='https://raw.githubusercontent.com/Lakens/to_err_is_human/main/analysis.R'>download</a>", 
-"<a href='NA'>download</a>", "<a href='NA'>download</a>", "<a href='NA'>download</a>", 
-"<a href='NA'>download</a>", "<a href='NA'>download</a>", "<a href='NA'>download</a>", 
-"<a href='NA'>download</a>")), row.names = c(NA, -13L), class = c("tbl_df", 
-"tbl", "data.frame"))
-
-# display table -----------------------------------
-metacheck::report_table(table, "auto", 5, FALSE)
-```
-
-#### Missing Files
-
-The scripts load files, but 1 scripts loaded files that could not be automatically identified in the repository. Check if the following files are made available, so that others can reproduce your code, or that the files are missing:
-
-```{r}
-#| echo: false
-
-# table data --------------------------------------
-table <- structure(list("Code File name" = "Code/Study 1.r", Language = "R", 
-    "Files loaded in code but missing in repository" = "file.csv"), row.names = c(NA, 
--1L), class = c("tbl_df", "tbl", "data.frame"))
-
-# display table -----------------------------------
-metacheck::report_table(table, "auto", 5, FALSE)
-```
-
-#### Hardcoded Paths
-
-Best programming practice is to use relative file paths instead of hardcoded file paths (e.g., C://Lakens/files) as these folder names do not exist on other computers. The following hardcoded file paths were found in 4 code file(s).
-
-```{r}
-#| echo: false
-
-# table data --------------------------------------
-table <- structure(list("Code File name" = c("bad.R", "bad.Rmd", "analysis.R", 
-"Code/Study 1.r"), Language = c("R", "R", "R", "R"), "Absolute paths found" = c("data <- read_csv(\"C://Lakens/files/example.csv\")", 
-"data <- read_csv(\"C://Lakens/files/example.csv\"), data2 <- read_csv(\"C://Lakens/files/example2.csv\")", 
-"data_1 <- read.csv(\"C:/path/to/a/file.csv\")", "abs_path_pc <- read.csv(\"C:/lisa/file.csv\")"
-)), row.names = c(NA, -4L), class = c("tbl_df", "tbl", "data.frame"
-))
-
-# display table -----------------------------------
-metacheck::report_table(table, "auto", 5, FALSE)
-```
-
-#### Libraries / Imports
-
-Best programming practice is to load all required libraries/imports in one block near the top of the code. In 3 code files, libraries/imports were at multiple places (i.e., with more than 3 lines in between). This was true in the following files, where libraries/imports were loaded on the following lines:
-
-```{r}
-#| echo: false
-
-# table data --------------------------------------
-table <- structure(list("Code File name" = c("bad.R", "bad.Rmd", "analysis.R"
-), Language = c("R", "R", "R"), "Lines at which libraries/imports are loaded" = c("1, 13", 
-"6, 25", "1, 11")), row.names = c(NA, -3L), class = c("tbl_df", 
-"tbl", "data.frame"))
-
-# display table -----------------------------------
-metacheck::report_table(table, "auto", 5, FALSE)
-```
-
-#### Code Comments
-
-Best programming practice is to add comments to code, to explain what the code does (to yourself in the future, or peers who want to re-use your code). The following 1 files had no comments:
-
-```{r}
-#| echo: false
-
-# table data --------------------------------------
-table <- structure(list("Code File name" = c("bad.R", "bad.Rmd", "analysis.R", 
-"Code/Study 1.r"), Language = c("R", "R", "R", "R"), "Percentage of lines that are comments" = c(0.0526315789473684, 
-0.0222222222222222, 0, 0.111111111111111)), row.names = c(NA, 
--4L), class = c("tbl_df", "tbl", "data.frame"))
-
-# display table -----------------------------------
-metacheck::report_table(table, "auto", 5, FALSE)
-```
-
-#### README
-
-No README file was found. README files are a way to document the contents and structure of a folder, helping users locate the information they need. You can use a README to document changes to a repository, and explain how files are named. Please consider adding a README.
-
-::: {.callout-note title="How It Works" collapse="true"}
-
-This module retrieves information from repositories (OSF and GitHub) about code files (R, SAS, SPSS, Stata), zip files, and readme.
-
-The Code Check module lists files on the OSF and GitHub based on links in the manuscript, and retrieves R, Rmd, Qmd, SAS, SPSS, and Stata files. The module then uses regular expressions to check the code. The regular expression search will detect the number of comments, the lines at which libraries/imports are loaded, attempts to detect absolute paths to files, and lists files that are loaded, and checks if these files are in the repository. It will also check for a readme file in the repository, and will warn it can’t examine the contents of zip files. The module will return suggestions to improve the code if there are no comments, if libraries/imports are loaded in lines further than 4 lines apart, if files that are loaded are not in the repository, and if hardcoded file paths are found.
-
-The regular expressions can miss information in code files, or falsely detect parts of the code as a fixed file path. Libraries/imports might be loaded in one block, even if there are more than 3 intermittent lines. The package was validated internally on papers published in Psychological Science. There might be valid reasons why some loaded files can’t be shared, but the module can’t evaluate these reasons, and always gives a warning.
-
-If you want to extend the package to be able to download files from additional data repositories, or perform additional checks on code files, or make the checks work on other types of code files, reach out to the Metacheck development team.
-
-This module was developed by Daniel Lakens
-
-:::
-
-### StatCheck {.red}
-
-We detected possible errors in test statistics. Note that as the accuracy of statcheck has only been validated for *t*-tests and *F*-tests. As Metacheck only uses validated modules, we only provide statcheck results for *t* tests and *F*-tests.
-
-```{r}
-#| echo: false
-
-# table data --------------------------------------
-table <- structure(list(Text = "t(97.2) = -1.96, p = 0.152", "Recomputed p" = 0.05286, 
-    Section = "results", Sentence = "On average researchers in the experimental condition found the app marginally significantly more useful (M = 5.06) than researchers in the control condition found the checklist (M = 4.5), t(97.2) = -1.96, p = 0.152."), row.names = 2L, class = c("statcheck", 
-"data.frame"))
-
-# display table -----------------------------------
-metacheck::report_table(table, c("10em", NA, NA, NA), 2, FALSE)
-```
-
-::: {.callout-tip title="Learn More" collapse="true"}
-
-For metascientific research on the validity of statcheck, and it's usefulness to prevent statistical reporting errors, see:
-
-Nuijten M, van Assen M, Hartgerink C, Epskamp S, Wicherts J (2017). &ldquo;The validity of the tool &quot;statcheck&quot; in discovering statistical reporting inconsistencies.&rdquo; <a href="https://doi.org/10.31234/osf.io/tcxaja">doi:10.31234/osf.io/tcxaja</a>, Preprint.
-
-Nuijten M, Wicherts J (2023). &ldquo;The effectiveness of implementing statcheck in the peer review process to avoid statistical reporting errors.&rdquo; <a href="https://doi.org/10.31234/osf.io/bxau9">doi:10.31234/osf.io/bxau9</a>, Preprint.
-
-:::
-
-::: {.callout-note title="How It Works" collapse="true"}
-
-Check consistency of p-values and test statistics
-
-The Statcheck module runs Statcheck. Statcheck searches for regular expressions that match a predefined pattern, and identifies APA reported statistical tests. More information on the package can be found at <https://github.com/cran/statcheck>. The module only returns Statcheck results for t-tests and F-tests, as these are the only tests which have been validated, see <https://osf.io/preprints/psyarxiv/tcxaj_v1/>.
-
-Statcheck was developed by Michèle Nuijten and Sascha Epskamp.
-
-Statcheck considers p = 0.000 an error, as you should report p < 0.001. Furthermore, p < 0.03 is an error if the p-value was 0.031, and one should simply report exact p-values (p = 0.031). Statcheck might miss one-sided tests, and falsely assume the p-value is incorrect. For more information, see [StatCheck](https://statcheck.io/).
-
-This module was developed by Daniel Lakens and Lisa DeBruine
-
-:::
 
 ### Exact P-Values {.red}
 
@@ -547,6 +490,45 @@ This module was developed by Daniel Lakens
 
 :::
 
+### Marginal Significance {.red}
+
+You described effects with terms related to 'marginally significant'. If *p* values above 0.05 are interpreted as an effect, you inflate the alpha level, and increase the Type 1 error rate. If a *p* value is higher than the prespecified alpha level, it should be interpreted as a non-significant result.
+
+```{r}
+#| echo: false
+
+# table data --------------------------------------
+table <- structure(list(section = c("abstract", "results"), text = c("The paper shows examples of (1) open and closed OSF links; (2a) citation of retracted papers, (2b) citations without a doi, (2c) citations with Pubpeer comments, (2d) citations in the FORTT replication database, and (2e) missing/mismatched/incorrect citations and references; (3a) R files with code on GitHub that do not load libraries in one location, (3b) load files that are not shared in the repository, (3c) lack comments, and (3d) have hard-coded files, (4) imprecise reporting of non-significant pvalues; (5) tests with and without effect sizes, (6) use of \"marginally significant\" to describe non-significant findings, and (7) retrieving information from preregistrations.", 
+"On average researchers in the experimental condition found the app marginally significantly more useful (M = 5.06) than researchers in the control condition found the checklist (M = 4.5), t(97.2) = -1.96, p = 0.152."
+)), row.names = c(NA, -2L), class = c("tbl_df", "tbl", "data.frame"
+))
+
+# display table -----------------------------------
+metacheck::report_table(table, "auto", 2, FALSE)
+```
+
+::: {.callout-tip title="Learn More" collapse="true"}
+
+For metascientific articles demonstrating the rate at which non-significant p-values are interpreted as marginally significant, see:
+
+Olsson-Collentine, A., van Assen, M. MAL, Hartgerink &amp;, J. CH (2019). &ldquo;The Prevalence of Marginally Significant Results in Psychology Over Time.&rdquo; <em>Psychological Science</em>, <b>30</b>, 576&ndash;586. <a href="https://doi.org/10.1177/0956797619830326">doi:10.1177/0956797619830326</a>.
+
+For the list of terms used to identifify marginally significant results, see this [blog post by Matthew Hankins](https://web.archive.org/web/20251001114321/https://mchankins.wordpress.com/2013/04/21/still-not-significant-2/).
+
+:::
+
+::: {.callout-note title="How It Works" collapse="true"}
+
+List all sentences that describe an effect as 'marginally significant'.
+
+The marginal module searches for regular expressions that match a predefined pattern. The list of terms is a subset of those listed in a [blog post by Matthew Hankins](https://web.archive.org/web/20251001114321/https://mchankins.wordpress.com/2013/04/21/still-not-significant-2/). The module returns all sentences that match terms describing ‘marginally significant’ results.
+
+Some of the terms identified might not be problematic in some contexts, and there are ways to describe ‘marginal significance’ that are not detected by the module.
+
+This module was developed by Daniel Lakens
+
+:::
+
 ### Effect Sizes in t-tests and F-tests {.red}
 
 We found 1 t-test and/or F-test where effect sizes are not reported. We recommend checking the sentences below, and add any missing effect sizes.
@@ -607,40 +589,151 @@ This module was developed by Daniel Lakens and Lisa DeBruine
 
 :::
 
-### Marginal Significance {.red}
+### StatCheck {.red}
 
-You described effects with terms related to 'marginally significant'. If *p* values above 0.05 are interpreted as an effect, you inflate the alpha level, and increase the Type 1 error rate. If a *p* value is higher than the prespecified alpha level, it should be interpreted as a non-significant result.
+We detected possible errors in test statistics. Note that as the accuracy of statcheck has only been validated for *t*-tests and *F*-tests. As Metacheck only uses validated modules, we only provide statcheck results for *t* tests and *F*-tests.
 
 ```{r}
 #| echo: false
 
 # table data --------------------------------------
-table <- structure(list(section = c("abstract", "results"), text = c("The paper shows examples of (1) open and closed OSF links; (2a) citation of retracted papers, (2b) citations without a doi, (2c) citations with Pubpeer comments, (2d) citations in the FORTT replication database, and (2e) missing/mismatched/incorrect citations and references; (3a) R files with code on GitHub that do not load libraries in one location, (3b) load files that are not shared in the repository, (3c) lack comments, and (3d) have hard-coded files, (4) imprecise reporting of non-significant pvalues; (5) tests with and without effect sizes, (6) use of \"marginally significant\" to describe non-significant findings, and (7) retrieving information from preregistrations.", 
-"On average researchers in the experimental condition found the app marginally significantly more useful (M = 5.06) than researchers in the control condition found the checklist (M = 4.5), t(97.2) = -1.96, p = 0.152."
-)), row.names = c(NA, -2L), class = c("tbl_df", "tbl", "data.frame"
-))
+table <- structure(list(Text = "t(97.2) = -1.96, p = 0.152", "Recomputed p" = 0.05286, 
+    Section = "results", Sentence = "On average researchers in the experimental condition found the app marginally significantly more useful (M = 5.06) than researchers in the control condition found the checklist (M = 4.5), t(97.2) = -1.96, p = 0.152."), row.names = 2L, class = c("statcheck", 
+"data.frame"))
 
 # display table -----------------------------------
-metacheck::report_table(table, "auto", 2, FALSE)
+metacheck::report_table(table, c("10em", NA, NA, NA), 2, FALSE)
 ```
 
 ::: {.callout-tip title="Learn More" collapse="true"}
 
-For metascientific articles demonstrating the rate at which non-significant p-values are interpreted as marginally significant, see:
+For metascientific research on the validity of statcheck, and it's usefulness to prevent statistical reporting errors, see:
 
-Olsson-Collentine, A., van Assen, M. MAL, Hartgerink &amp;, J. CH (2019). &ldquo;The Prevalence of Marginally Significant Results in Psychology Over Time.&rdquo; <em>Psychological Science</em>, <b>30</b>, 576&ndash;586. <a href="https://doi.org/10.1177/0956797619830326">doi:10.1177/0956797619830326</a>.
+Nuijten M, van Assen M, Hartgerink C, Epskamp S, Wicherts J (2017). &ldquo;The validity of the tool &quot;statcheck&quot; in discovering statistical reporting inconsistencies.&rdquo; <a href="https://doi.org/10.31234/osf.io/tcxaja">doi:10.31234/osf.io/tcxaja</a>, Preprint.
 
-For the list of terms used to identifify marginally significant results, see this [blog post by Matthew Hankins](https://web.archive.org/web/20251001114321/https://mchankins.wordpress.com/2013/04/21/still-not-significant-2/).
+Nuijten M, Wicherts J (2023). &ldquo;The effectiveness of implementing statcheck in the peer review process to avoid statistical reporting errors.&rdquo; <a href="https://doi.org/10.31234/osf.io/bxau9">doi:10.31234/osf.io/bxau9</a>, Preprint.
 
 :::
 
 ::: {.callout-note title="How It Works" collapse="true"}
 
-List all sentences that describe an effect as 'marginally significant'.
+Check consistency of p-values and test statistics
 
-The marginal module searches for regular expressions that match a predefined pattern. The list of terms is a subset of those listed in a [blog post by Matthew Hankins](https://web.archive.org/web/20251001114321/https://mchankins.wordpress.com/2013/04/21/still-not-significant-2/). The module returns all sentences that match terms describing ‘marginally significant’ results.
+The Statcheck module runs Statcheck. Statcheck searches for regular expressions that match a predefined pattern, and identifies APA reported statistical tests. More information on the package can be found at <https://github.com/cran/statcheck>. The module only returns Statcheck results for t-tests and F-tests, as these are the only tests which have been validated, see <https://osf.io/preprints/psyarxiv/tcxaj_v1/>.
 
-Some of the terms identified might not be problematic in some contexts, and there are ways to describe ‘marginal significance’ that are not detected by the module.
+Statcheck was developed by Michèle Nuijten and Sascha Epskamp.
+
+Statcheck considers p = 0.000 an error, as you should report p < 0.001. Furthermore, p < 0.03 is an error if the p-value was 0.031, and one should simply report exact p-values (p = 0.031). Statcheck might miss one-sided tests, and falsely assume the p-value is incorrect. For more information, see [StatCheck](https://statcheck.io/).
+
+This module was developed by Daniel Lakens and Lisa DeBruine
+
+:::
+
+### Code Check {.yellow}
+
+Below, we describe some best coding practices and give the results of automatic evaluation of these practices in the code files below. This check may miss things or produce false positives if your scripts are less typical.
+
+```{r}
+#| echo: false
+
+# table data --------------------------------------
+table <- structure(list("Code File Name" = c("bad.R", "bad.Rmd", "analysis.R", 
+"Code/Study 1.r", "Codebook/Study 1 - csv - dataset 1.csv___CODEBOOK.csv", 
+"Codebook/Study 1.csv___CODEBOOK.csv", "Data/Study 1 - csv - dataset 1.csv", 
+"Data/Study 1.csv", "Materials/Study 1 - test txt file.txt", 
+"Table of Contents Box #4377.csv"), Download = c("<a href='https://osf.io/download/6935bc117049c887a125cb25/'>download</a>", 
+"<a href='https://osf.io/download/uq347/'>download</a>", "<a href='https://raw.githubusercontent.com/Lakens/to_err_is_human/main/analysis.R'>download</a>", 
+"<a href='https://researchbox.org/4377'>download</a>", "<a href='https://researchbox.org/4377'>download</a>", 
+"<a href='https://researchbox.org/4377'>download</a>", "<a href='https://researchbox.org/4377'>download</a>", 
+"<a href='https://researchbox.org/4377'>download</a>", "<a href='https://researchbox.org/4377'>download</a>", 
+"<a href='https://researchbox.org/4377'>download</a>")), row.names = c(1L, 
+3L, 4L, 6L, 7L, 8L, 9L, 10L, 11L, 12L), class = "data.frame")
+
+# display table -----------------------------------
+metacheck::report_table(table, "auto", 5, FALSE)
+```
+
+#### Missing Files
+
+The scripts load files, but 1 scripts loaded files that could not be automatically identified in the repository. Check if the following files are made available, so that others can reproduce your code, or that the files are missing:
+
+```{r}
+#| echo: false
+
+# table data --------------------------------------
+table <- structure(list("Code File name" = "Code/Study 1.r", Language = "R", 
+    "Files loaded in code but missing in repository" = "file.csv"), row.names = 4L, class = "data.frame")
+
+# display table -----------------------------------
+metacheck::report_table(table, "auto", 5, FALSE)
+```
+
+#### Hardcoded Paths
+
+Best programming practice is to use relative file paths instead of hardcoded file paths (e.g., C://Lakens/files) as these folder names do not exist on other computers. The following hardcoded file paths were found in 4 code file(s).
+
+```{r}
+#| echo: false
+
+# table data --------------------------------------
+table <- structure(list("Code File name" = c("bad.R", "bad.Rmd", "analysis.R", 
+"Code/Study 1.r"), Language = c("R", "R", "R", "R"), "Absolute paths found" = c("data <- read_csv(\"C://Lakens/files/example.csv\")", 
+"data <- read_csv(\"C://Lakens/files/example.csv\"), data2 <- read_csv(\"C://Lakens/files/example2.csv\")", 
+"data_1 <- read.csv(\"C:/path/to/a/file.csv\")", "abs_path_pc <- read.csv(\"C:/lisa/file.csv\")"
+)), row.names = c(NA, 4L), class = "data.frame")
+
+# display table -----------------------------------
+metacheck::report_table(table, "auto", 5, FALSE)
+```
+
+#### Libraries / Imports
+
+Best programming practice is to load all required libraries/imports in one block near the top of the code. In 3 code files, libraries/imports were at multiple places (i.e., with more than 3 lines in between). This was true in the following files, where libraries/imports were loaded on the following lines:
+
+```{r}
+#| echo: false
+
+# table data --------------------------------------
+table <- structure(list("Code File name" = c("bad.R", "bad.Rmd", "analysis.R"
+), Language = c("R", "R", "R"), "Lines at which libraries/imports are loaded" = c("1, 13", 
+"6, 25", "1, 11")), row.names = c(NA, 3L), class = "data.frame")
+
+# display table -----------------------------------
+metacheck::report_table(table, "auto", 5, FALSE)
+```
+
+#### Code Comments
+
+Best programming practice is to add comments to code, to explain what the code does (to yourself in the future, or peers who want to re-use your code). The following 1 files had no comments:
+
+```{r}
+#| echo: false
+
+# table data --------------------------------------
+table <- structure(list("Code File name" = c("bad.R", "bad.Rmd", "analysis.R", 
+"Code/Study 1.r"), Language = c("R", "R", "R", "R"), "Percentage of lines that are comments" = c(0.0526315789473684, 
+0.0222222222222222, 0, 0.111111111111111)), row.names = c(NA, 
+4L), class = "data.frame")
+
+# display table -----------------------------------
+metacheck::report_table(table, "auto", 5, FALSE)
+```
+
+#### README
+
+We found 0 README files and 3 sources without READMEs: osf.io/cxjg4, https://github.com/Lakens/to_err_is_human, https://researchbox.org/4377. 
+
+README files are a way to document the contents and structure of a folder, helping users locate the information they need. You can use a README to document changes to a repository, and explain how files are named. Please consider adding a README to each repository.
+
+::: {.callout-note title="How It Works" collapse="true"}
+
+This module retrieves information from repositories (OSF and GitHub) about code files (R, SAS, SPSS, Stata), zip files, and readme.
+
+The Code Check module lists files on the OSF and GitHub based on links in the manuscript, and retrieves R, Rmd, Qmd, SAS, SPSS, and Stata files. The module then uses regular expressions to check the code. The regular expression search will detect the number of comments, the lines at which libraries/imports are loaded, attempts to detect absolute paths to files, and lists files that are loaded, and checks if these files are in the repository. It will also check for a readme file in the repository, and will warn it can’t examine the contents of zip files. The module will return suggestions to improve the code if there are no comments, if libraries/imports are loaded in lines further than 4 lines apart, if files that are loaded are not in the repository, and if hardcoded file paths are found.
+
+The regular expressions can miss information in code files, or falsely detect parts of the code as a fixed file path. Libraries/imports might be loaded in one block, even if there are more than 3 intermittent lines. The package was validated internally on papers published in Psychological Science. There might be valid reasons why some loaded files can’t be shared, but the module can’t evaluate these reasons, and always gives a warning.
+
+If you want to extend the package to be able to download files from additional data repositories, or perform additional checks on code files, or make the checks work on other types of code files, reach out to the Metacheck development team.
 
 This module was developed by Daniel Lakens
 
@@ -672,6 +765,48 @@ This module checks references for missing DOIs or DOIs with an invalid format.
 This module works by identifying references that do not have a DOI or have a DOI that does not have a valid format. It then looks up these references by title, author and journal or book title in CrossRef. A DOI match is returned for the reference with the highest match above the `crossref_min_score` (default of 50).
 
 Carefully check the returned results, as problems with reference import can lead to false positives.
+
+This module was developed by Daniel Lakens and Lisa DeBruine
+
+:::
+
+### Reference Accuracy {.yellow}
+
+We checked 3 references with DOIs in CrossRef and found  matches for 2.
+
+Double check any references listed in the tables below. This tool has a high false positive rate.
+
+```{r}
+#| echo: false
+
+# table data --------------------------------------
+table <- structure(list("Unfound Reference" = "Smith F (2021). &ldquo;Human error is a symptom of a poor design.&rdquo; <em>Journal of Journals</em>, <b>0</b>(0), 0. <a href=\"https://doi.org/10.0000/0123456789\">doi:10.0000/0123456789</a>."), row.names = 3L, class = "data.frame")
+
+# display table -----------------------------------
+metacheck::report_table(table, 5, 2, FALSE)
+```
+
+```{r}
+#| echo: false
+
+# table data --------------------------------------
+table <- structure(list("Original Title" = "Evil Genius? How Dishonesty Can Lead to Greater Creativity", 
+    "CrossRef Title" = "Retracted: Evil Genius? How Dishonesty Can Lead to Greater Creativity", 
+    Reference = "Gino F, Wiltermuth SS (2014). &ldquo;Evil Genius? How Dishonesty Can Lead to Greater Creativity.&rdquo; <em>Psychological Science</em>, <b>25</b>(4), 973-981. <a href=\"https://doi.org/10.1177/0956797614520714\">doi:10.1177/0956797614520714</a>."), class = "data.frame", row.names = 2L)
+
+# display table -----------------------------------
+metacheck::report_table(table, 5, 2, FALSE)
+```
+
+::: {.callout-note title="How It Works" collapse="true"}
+
+This module checks references for mismatches with CrossRef.
+
+It only looks up the DOIs originally present in your paper (not those found by ref_doi_check) and returns the bibliographic information.
+
+We then check that the title from your reference section is the same as the retrieved title (ignoring differences in capitalisation) and that all author last names in your reference section are also in the retrieved author list (we do not check first names or order yet).
+
+Mismatches may be because of problems with our parsing of references from your PDF (we're working on improving this), incorrect formatting in CrossRef, or minor differences in punctuation.
 
 This module was developed by Daniel Lakens and Lisa DeBruine
 
