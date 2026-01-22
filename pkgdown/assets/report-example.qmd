@@ -3,8 +3,8 @@ title: MetaCheck Report
 subtitle: "To Err is Human: An Empirical Investigation"
 author: "Daniel Lakens & Lisa DeBruine"
 metacheck:
-  version: "0.0.0.9065"
-  report-created: "2026-01-16"
+  version: "0.0.0.9066"
+  report-created: "2026-01-22"
 format:
   html:
     theme: 
@@ -59,7 +59,6 @@ execute:
   .quarto-dark table strong { color: yellow; }
   summary { color: #333; }
   .quarto-dark summary { color: #CCC; }
-  th:empty { display: none; }
 </style>
 
 ::: {#info}
@@ -109,22 +108,6 @@ Metacheck is under continuous development. Issues can be submitted [on Github](h
 - ℹ️ [Replication Check](#replication-check){.info}: You cited 1 article in the FReD replication database.  
 - ℹ️ [RetractionWatch](#retractionwatch){.info}: You cited 1 article in the RetractionWatch database.  
 - ℹ️ [Check PubPeer Comments](#check-pubpeer-comments){.info}: You cited 1 reference with comments in PubPeer.  
-
-<script>
-function openTab(evt, tabName) {
-  var i, tabcontent, tablinks;
-  tabcontent = document.getElementsByClassName("level2");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-  document.getElementById(tabName).style.display = "block";
-  evt.currentTarget.className += " active";
-}
-</script>
 
 
 
@@ -779,16 +762,15 @@ metacheck::report_table(table, "auto", 5, FALSE)
 
 #### Code Comments
 
-Best programming practice is to add comments to code, to explain what the code does (to yourself in the future, or peers who want to re-use your code). The following 1 files had no comments:
+Best programming practice is to add comments to code, to explain what the code does (to yourself in the future, or peers who want to re-use your code).
 
 ```{r}
 #| echo: false
 
 # table data --------------------------------------
 table <- structure(list("Code File name" = c("bad.R", "bad.Rmd", "analysis.R", 
-"Code/Study 1.r"), Language = c("R", "R", "R", "R"), "Percentage of lines that are comments" = c(0.0526315789473684, 
-0.0222222222222222, 0, 0.111111111111111)), row.names = c(NA, 
-4L), class = "data.frame")
+"Code/Study 1.r"), Language = c("R", "R", "R", "R"), "Percentage of lines that are comments" = c("5%", 
+"2%", "0%", "11%")), row.names = c(NA, 4L), class = "data.frame")
 
 # display table -----------------------------------
 metacheck::report_table(table, "auto", 5, FALSE)
@@ -831,7 +813,7 @@ Double check any references listed in the tables below. The match score gives an
 
 # table data --------------------------------------
 table <- structure(list("Found DOI" = "<a href='https://doi.org/10.1177/2515245918770963' target='_blank'>doi.org/10.1177/2515245918770963</a>", 
-    "Match Score" = 69, "Original Reference" = "Lakens D (2018). &ldquo;Equivalence testing for psychological research.&rdquo; <em>Advances in Methods and Practices in Psychological Science</em>, <b>1</b>, 259-270."), row.names = 1L, class = "data.frame")
+    "Match Score" = 70, "Original Reference" = "Lakens D (2018). &ldquo;Equivalence testing for psychological research.&rdquo; <em>Advances in Methods and Practices in Psychological Science</em>, <b>1</b>, 259-270."), row.names = 1L, class = "data.frame")
 
 # display table -----------------------------------
 metacheck::report_table(table, "auto", 2, FALSE)
