@@ -116,23 +116,38 @@ wrap_text <- function(x, width = 80, indent = 0) {
 
 
 safe_run <- function(label, func, args = list(), log_path = NULL, max_arg_len = 200) {
+  # Extract current timestamp
+  timestamp <- format( as.POSIXct(Sys.time(), tz = "UTC"), "%Y-%m-%d_%H-%M-%OS3")
+  timestamp <- gsub("\\.", "-", timestamp)
 
-  SEP <- paste(rep("=", 80), collapse = "")
-  SUBSEP <- paste(rep("-", 80), collapse = "")
+  # in case log path is null, generate one
+  if (is.null(log_path)) {
+    log_path <- file.path("logs", "error", "undefined.log")
+  }
+  # Add the timestamp to the log
+  ext <- tools::file_ext(log_path)
+  if (nzchar(ext)) {
+    base <- sub(paste0("\\.", ext, "$"), "", log_path)
+    log_path <- paste0(base, "_", timestamp, ".", ext)
+  } else {
+    log_path <- paste0(log_path, "_", timestamp, ".log")
+  }
+  # Create the log dir if it does not exist yet
 
+  dir.create(dirname(log_path), recursive = TRUE, showWarnings = FALSE)
+
+  # Describe the command that was called with the actual args in plaintext for proper reproducition
   call_desc <- tryCatch({
     describe_callable(func, args = args, max_len = max_arg_len)
   }, error = function(e) {
     "<could not describe call>"
   })
 
-  if (is.null(log_path)) {
-    log_path <- file.path("logs", "error", "undefined.log")
-  }
-  dir.create(dirname(log_path), recursive = TRUE, showWarnings = FALSE)
+  # Generate the log message
+  SEP <- paste(rep("=", 80), collapse = "")
+  SUBSEP <- paste(rep("-", 80), collapse = "")
 
   log_condition <- function(cond, type = "ERROR") {
-    ts <- format(Sys.time(), "%Y-%m-%d %H:%M:%S")
     exc_type <- class(cond)[1]
     exc_msg  <- conditionMessage(cond)
 
@@ -157,7 +172,8 @@ safe_run <- function(label, func, args = list(), log_path = NULL, max_arg_len = 
       writeLines(c(
         "",
         SEP,
-        sprintf("[%s] %s", ts, type),
+        sprintf("[%s] %s", timestamp, type),
+        sprintf("Timestamp  : %s", timestamp),
         sprintf("Label      : %s", label),
         sprintf("Call       : %s", call_desc),
         sprintf("Condition  : %s", exc_type),
@@ -180,7 +196,7 @@ safe_run <- function(label, func, args = list(), log_path = NULL, max_arg_len = 
       },
       error = function(e) {
         log_condition(e, "ERROR")
-        return(NULL)
+        return(sprintf("'%s', traceback at %s", e, log_path))
       }
     ),
     warning = function(w) {
