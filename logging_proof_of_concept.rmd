@@ -1,0 +1,82 @@
+# I based this very simple thing on my previous internship work in Python. its a 
+# claude based quick and dirty R implementation, but does serve the purpose of actually
+# calling functions with error logging, preserving the root cause and the arguments
+# aka the papers!! in the funciton used when used poperly
+
+Small Proof of Concept for Logging Errors in Module Execution
+
+Import all modules
+```{r}
+library(here)
+files <- list.files("R", pattern = "\\.R$", full.names = TRUE)
+invisible(lapply(files, source))
+```
+
+
+import paper
+```{r}
+xml_file <- demoxml()
+paper <- read(xml_file)
+```
+
+List module to check if everything is working
+```{r}
+module_list()
+```
+
+Run a module with logging enabled without expecting errors to show the original functionality works
+```{r}
+results <- module_run(paper, "all_p_values", log_errors = TRUE)
+```
+
+Inspect the results (running as intended)
+```{r}
+results$table
+```
+
+Now, lets see what happens when it breaks, like a non existent module:
+
+```{r}
+safe_run(
+  label = "not defined",
+  func = run_module,           # the function object
+  args = list(
+    paper = paper,             # first argument
+    module = "non_existent_module"  # second argument
+  ),
+  log_path = "logs/error/modules/non_existent_module.log"
+)
+
+```
+
+
+```{r}
+safe_run(
+  label = "paper not found",
+  func = read,
+  args = list(
+    "this/file/does/not/exist.xml"
+  ),
+  log_path = "logs/error/papers/missing_file.log"
+)
+```
+
+```{r}
+safe_run(
+  label = "paper is NULL",
+  func = module_run,
+  args = list(
+    paper = NULL,
+    module = "all_p_values",
+    log_errors = TRUE
+  ),
+  log_path = "logs/error/papers/null_paper.log"
+)
+
+```
+
+
+I hope this helps!
+
+
+
